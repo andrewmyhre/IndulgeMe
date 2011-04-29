@@ -113,4 +113,16 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  
+	<ItemGroup>
+		<CopyFiles Include="bin\**\*.*" />
+    </ItemGroup>
+
+    <Target Name="Deploy">
+        <Copy
+            SourceFiles="@(CopyFiles)"
+            DestinationFolder="c:\inetpub\EmailRelay"
+        />
+    </Target>
+  
 </Project>
