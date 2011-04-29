@@ -1,0 +1,40 @@
+﻿<%@ Master Language="C#" Inherits="System.Web.Mvc.ViewMasterPage" %>
+<%@ Import Namespace="JustConfessing" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Indulge Me - <asp:ContentPlaceHolder ID="TitleContent" runat="server" /></title>
+	<meta charset="UTF-8">	
+	<link rel="stylesheet" href="/content/im.css" />
+    <!--[if IE 6]>
+    <style type="text/css">
+    html { overflow-y: hidden; }
+    body { overflow-y: auto; }
+    img#bg { position:absolute; z-index:-1; }
+    #page { position:static; }
+    </style>
+    <![endif]-->
+    <asp:ContentPlaceHolder runat="server" ID="Scripts"></asp:ContentPlaceHolder>
+</head>
+
+<body class="clearfix">
+    <div class="page">
+        <h1 class="masthead"><a href="/">Indulge Me</a></h1>
+    	<div id="wrapper">
+            <ul id="nav">
+                <li><a href="/">Home</a></li>
+                <li><%=Html.ActionLink("Browse Indulgences","List", "Indulgence") %></li>
+            </ul>
+            <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+
+            <div id="footer">
+            </div>
+          <div class="push"></div>
+	    </div>
+	    <div id="footer-image"><div id="god"></div></div>
+    </div>
+
+     <%Html.RenderPartial("~/Views/Shared/Analytics.ascx"); %>
+</body>
+</html>

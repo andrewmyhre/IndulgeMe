@@ -1,0 +1,229 @@
+﻿body {
+    height: 100%;
+  margin: 0;
+  padding: 0;
+    background:#EFDDAF;
+    background-image:url('/content/paper.jpg');
+}
+
+body, p, a, div, td, input
+{
+    font-family:Georgia, verdana;
+    font-size:12pt;
+    color:#7F0000;
+}
+
+a { color:#AF0000;}
+a:hover {color:#AF3333;}
+
+img#bg {
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+}
+
+.page {
+  position:relative;
+  z-index:1;
+  width:1024px;
+  margin:auto;
+  text-align:center;
+}
+
+h1.masthead
+{
+    background-image:url('/content/header.png');
+    text-indent:-99999px;
+    background-repeat:no-repeat;
+    height:50px;
+    padding:0;
+    background-position:center;
+}
+
+p.tl
+{
+    font-size:10pt;
+    font-style:italic;
+}
+
+#siteInfo
+{
+}
+
+#nav
+{
+    margin:0;
+    padding:0;
+}
+
+#nav li
+{
+    display:inline;
+    text-indent:0;
+    margin:0;
+    padding:0;
+}
+
+#confess
+{
+    
+}
+
+#confess p
+{
+font-size:48pt;
+}
+
+#confessbox
+{
+    
+}
+
+.watermarkOn {
+        color: #CCCCCC;
+        font-style: italic;
+    }
+
+#recently
+{
+}
+
+#recently ul
+{
+    margin:0;
+    padding:0;
+}
+#recently ul li, #browse-sins ul li
+{
+    text-align:left;
+    list-style:none;
+    padding:6px;
+    background-color:#EFDDAF;
+    margin:6px;
+    float:left;
+    width:100%;
+}
+#browse-sins ul li .right
+{
+    float:right;
+    margin-left:1em;
+}
+
+#recently ul li img
+{
+text-align:right;
+}
+#recently ul li div
+{
+    float:left;
+}
+#recently ul li a
+{
+margin-right:15px;
+}
+#recently ul li
+{
+}
+#confess input
+{
+    font-size:28pt;
+    background-color:#F0FFFF;
+    border-radius:0.5em;
+    -moz-border-radius:0.5em;
+}
+#confessbox
+{
+    width:60%;
+}
+#siteInfo em
+{
+    font-size:20pt;
+    font-weight:bold;
+
+}
+
+#siteInfo p
+{
+    margin:0;
+    bottom:0.3em;
+}
+
+div.indulgence
+{
+    float:left;
+    width:33%;
+}
+
+div.indulgence a, div.indulgence img
+{
+    text-align:center;
+}
+div.indulgence a img
+{
+    border:0;
+}
+
+.clearfix { clear:both;}
+
+#select-charity #confession
+{
+    color:#Af0000;
+}
+#select-charity #charities
+{
+    float:left;
+    width:100%;
+}
+
+#select-charity .white, .aa
+{
+background-color:White;
+padding:1em;
+border-radius: 15px;
+-moz-border-radius: 15px;
+}
+
+#select-charity #charities li
+{
+    list-style:none;
+    text-align:left;
+    width:32%;
+    float:left;
+}
+#select-charity #charities li div
+{
+
+float:left;
+width:310px;
+margin-top:0.5em;
+text-align:center;
+}
+#select-charity #charities li div a img
+{
+    border:0;
+}
+
+#select-charity #charities li div a.cn
+{
+}
+#select-charity #charities li div a.cl
+{
+    float:left;
+    width:150px;
+}
+input {
+-moz-border-radius-bottomleft:5px;
+-moz-border-radius-bottomright:5px;
+-moz-border-radius-topleft:5px;
+-moz-border-radius-topright:5px;
+background-color:#F0FFFF;
+border:0 solid;
+padding:0.3em;
+}
+
+#select-charity #email
+{
+    width:300px;
+}

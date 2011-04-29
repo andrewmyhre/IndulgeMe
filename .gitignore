@@ -1,0 +1,13 @@
+bin/
+obj/
+*_ReSharper*
+*.user
+*.suo
+*.resharper
+RavenDb.Server/Data
+Raven.Server
+logs/
+App_Data/
+*Publish.xml
+TweetOutbox
+/BlessTheWeb/Content/indulgences/

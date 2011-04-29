@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<emailPackage xmlns="http://www.tanash.net/email/package">
+    <from>testfrom@server.com</from>
+    <recipients>
+        <address>testrecipient@test.com</address>
+    </recipients>
+    <subject>test email subject: {subjectToken}</subject>
+    <html>
+        <![CDATA[<p>html body</p>
+        <p>{htmlBodyToken}</p>]]>
+    </html>
+    <text>
+        text body
+        
+        {textBodyToken}
+    </text>
+    <attachments>
+        <attachment>D:\workspace\git\EmailSystem\EmailRelay.App.Tests.Unit\attachment.jpg</attachment>
+    </attachments>
+</emailPackage>

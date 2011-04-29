@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<emailTemplate xmlns="http://www.tanash.net/email/template">
+    <name>Exception</name>
+    <from>andrew.myhre@gmail.com</from>
+    <subject>indulgeme.andrewmyhre.com: unhandled exception</subject>
+    <html>
+        {message}
+    </html>
+    <text>
+        {message}
+    </text>
+    <tokens>
+        <token>message</token>
+    </tokens>
+</emailTemplate>

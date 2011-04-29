@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<email>
+    <subject>Your indulgence</subject>
+    <body>
+        <text>Hi @DonorName,
+
+Thank you for making a donation to @CharityName. In return for your goodwill your indulgence is attached. Now you can have it framed and lord your piousness over your friends!
+
+Regards,
+
+Andrew
+IndulgeMe.cc
+        </text>
+        <html>
+        </html>
+    </body>
+</email>

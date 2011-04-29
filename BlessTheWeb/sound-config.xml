@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- SoundManager Flash configuration -->
+<!-- Sound IDs are referenced from JS -->
+
+<items baseHref="audio/" defaultVol="100">
+
+ <sound id="page" href="10277-m-001.mp3" />
+
+</items>

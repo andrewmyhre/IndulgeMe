@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<emailTemplate xmlns="http://www.tanash.net/email/template">
+    <name>IndulgenceCreated</name>
+    <from>andrew.myhre@gmail.com</from>
+    <subject>Your indulgence</subject>
+    <html>
+        <![CDATA[<p>Hi {DonorName},</p>
+        <p>Thank you for making a donation to {CharityName}. In return for your goodwill we have created your very own papal indulgence. You are free to download it, print it and lord your piousness over your friends!</p>
+        <p><a href="{ServerAuthority}/content/{IndulgenceId}/indulgence.pdf"><img src="{ServerAuthority}/content/{IndulgenceId}/indulgence_25.png" /></a></p>
+        <p><a href="{ServerAuthority}/content/{IndulgenceId}/indulgence.pdf">Click here to download your indulgence</a></p>
+        <p>Regards,</p>
+        <p>Andrew</p>
+        <p>IndulgeMe.cc</p>]]></html>
+    <text>
+        Hi {DonorName},
+
+        Thank you for making a donation to {CharityName}. In return for your goodwill we have created your very own papal indulgence. You are free to download it, print it and lord your piousness over your friends!
+
+        Copy this link and paste into your browser to download your indulgence:
+
+        {ServerAuthority}/content/{IndulgenceId}/indulgence.pdf
+
+        Regards,
+
+        Andrew
+        IndulgeMe.cc
+    </text>
+    <tokens>
+        <token>DonorName</token>
+        <token>CharityName</token>
+        <token>IndulgenceId</token>
+    </tokens>
+</emailTemplate>
