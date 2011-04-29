@@ -51,11 +51,11 @@
     </Reference>
     <Reference Include="Raven.Client, Version=1.0.0.0, Culture=neutral, PublicKeyToken=37f41c7f99471593, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\Raven.Client.dll</HintPath>
+      <HintPath>..\libs\Raven.Client.dll</HintPath>
     </Reference>
     <Reference Include="Raven.Database, Version=1.0.0.0, Culture=neutral, PublicKeyToken=37f41c7f99471593, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\Raven.Database.dll</HintPath>
+      <HintPath>..\libs\Raven.Database.dll</HintPath>
     </Reference>
     <Reference Include="Spatial.Net">
       <HintPath>..\libs\Spatial.Net.dll</HintPath>
