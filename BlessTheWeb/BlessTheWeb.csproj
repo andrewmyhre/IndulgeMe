@@ -248,17 +248,23 @@
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets. -->
-  <Target Name="BeforeBuild">
-      <!--Modify Assembly Info-->
-      <AssemblyInfo CodeLanguage="CS"
-      OutputFile="Properties\AssemblyInfo.cs"
-      AssemblyCompany=""
-      AssemblyProduct="IndulgeMe"
-      ComVisible="false" Guid="$(WindowGuid)"
-      AssemblyVersion="$(Major).$(Minor).$(Build).$(Revision)"
-      AssemblyFileVersion="$(Major).$(Minor).$(Build).$(Revision)"
-      Condition="$(Revision) != '0' " />
-  </Target>
+    <Target Name="BeforeBuild">
+        <Message Text="Build: $(Build)"/>
+        <Version BuildType="Automatic" RevisionType="Automatic" Major="1" Minor="0" >
+            <Output TaskParameter="Major" PropertyName="Major" />
+            <Output TaskParameter="Minor" PropertyName="Minor" />
+            <Output TaskParameter="Revision" PropertyName="Revision" />
+        </Version>
+        <Message Text="Version: $(Major).$(Minor).$(Build).$(Revision)"/>
+        <!--Modify Assembly Info-->
+        <AssemblyInfo CodeLanguage="CS"
+        OutputFile="Properties\AssemblyInfo.cs"
+        AssemblyCopyright="Copyright © your company 2009"
+        AssemblyVersion="$(Major).$(Minor).$(Build).$(Revision)"
+        AssemblyFileVersion="$(Major).$(Minor).$(Build).$(Revision)"
+        Condition="$(Revision) != '0' " />
+
+    </Target>
 
   <Target Name="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
     <AspNetCompiler VirtualPath="temp" PhysicalPath="$(ProjectDir)" />

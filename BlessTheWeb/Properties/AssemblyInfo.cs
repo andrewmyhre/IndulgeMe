@@ -14,9 +14,8 @@ using System.Resources;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-[assembly: AssemblyProduct("IndulgeMe")]
-[assembly: ComVisible(false)]
-[assembly: AssemblyVersion("1.2.3.4")]
-[assembly: AssemblyFileVersion("1.2.3.5")]
+[assembly: AssemblyCopyright("Copyright © your company 2009")]
+[assembly: AssemblyVersion("1.0.3.53561")]
+[assembly: AssemblyFileVersion("1.0.3.53561")]
 
 
