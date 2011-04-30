@@ -35,6 +35,8 @@
 	    <div id="footer-image"><div id="god"></div></div>
     </div>
 
+    <div id="v"><%=System.Reflection.Assembly.GetCallingAssembly().GetName().Version.ToString() %></div>
+
      <%Html.RenderPartial("~/Views/Shared/Analytics.ascx"); %>
 </body>
 </html>
