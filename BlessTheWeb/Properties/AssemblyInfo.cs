@@ -15,7 +15,5 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 [assembly: AssemblyCopyright("Copyright © your company 2009")]
-[assembly: AssemblyVersion("1.0.3.53561")]
-[assembly: AssemblyFileVersion("1.0.3.53561")]
 
 

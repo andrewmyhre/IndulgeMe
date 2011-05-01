@@ -43,6 +43,9 @@
     <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
     <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
   </PropertyGroup>
+    <PropertyGroup>
+        <ProjectConfigFileName>Web.config</ProjectConfigFileName>
+    </PropertyGroup>
   <ItemGroup>
     <Reference Include="AutoMapper">
       <HintPath>..\libs\AutoMapper.dll</HintPath>
@@ -241,6 +244,7 @@
   <ItemGroup>
     <Content Include="Web.EC2.config">
       <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\MSBuildCommunityTasks\MSBuild.Community.Tasks.Targets" />
@@ -256,7 +260,11 @@
     <AssemblyInfo CodeLanguage="CS" OutputFile="Properties\AssemblyInfo.cs" AssemblyCopyright="Copyright © your company 2009" AssemblyVersion="$(Version)" AssemblyFileVersion="$(Version)" />
   </Target>
   <Target Name="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
-    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(ProjectDir)" />
+      <TransformXml Source="@(AppConfigWithTargetPath)"
+                    Transform="$(ProjectConfigFileName)"
+                    Destination="@(AppConfigWithTargetPath->'$(OutDir)%(TargetPath)')" />
+
+      <AspNetCompiler VirtualPath="temp" PhysicalPath="$(ProjectDir)" />
   </Target>
   <ProjectExtensions>
     <VisualStudio>
