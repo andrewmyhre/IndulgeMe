@@ -43,9 +43,9 @@
     <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
     <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
   </PropertyGroup>
-    <PropertyGroup>
-        <ProjectConfigFileName>Web.debug.config</ProjectConfigFileName>
-    </PropertyGroup>
+  <PropertyGroup>
+    <ProjectConfigFileName>Web.debug.config</ProjectConfigFileName>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="AutoMapper">
       <HintPath>..\libs\AutoMapper.dll</HintPath>
@@ -166,6 +166,9 @@
     <Content Include="Content\YeOldeParchment4.png" />
     <Content Include="errors\404.html" />
     <Content Include="errors\oops.html" />
+    <Content Include="favicon.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Scripts\home.js" />
     <Content Include="Scripts\wall.js" />
     <Content Include="sound-config.xml" />
@@ -259,24 +262,18 @@
     <!--Modify Assembly Info-->
     <AssemblyInfo CodeLanguage="CS" OutputFile="Properties\AssemblyInfo.cs" AssemblyCopyright="Copyright © your company 2009" AssemblyVersion="$(Version)" AssemblyFileVersion="$(Version)" />
   </Target>
-
-    <PropertyGroup>
-        <ConfigFilename>web.config</ConfigFilename>
-    </PropertyGroup>
-
+  <PropertyGroup>
+    <ConfigFilename>web.config</ConfigFilename>
+  </PropertyGroup>
   <Target Name="AfterBuild">
-      <AspNetCompiler VirtualPath="temp" PhysicalPath="$(ProjectDir)" Condition="$(MvcBuildViews)=='true'" />
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(ProjectDir)" Condition="$(MvcBuildViews)=='true'" />
   </Target>
-
-    <Target Name="TransformConfig">
-        <Message Text="Transform $(ProjectConfigFileName)"/>
-        <Message Text="config = @(AppConfigWithTargetPath)" />
-        <Message Text="outdir=$(OutDir)" />
-        <TransformXml Source="Web.config"
-                      Transform="$(ProjectConfigFileName)"
-                      Destination="$(OutDir)..\Web.config" />
-    </Target>
-
+  <Target Name="TransformConfig">
+    <Message Text="Transform $(ProjectConfigFileName)" />
+    <Message Text="config = @(AppConfigWithTargetPath)" />
+    <Message Text="outdir=$(OutDir)" />
+    <TransformXml Source="Web.config" Transform="$(ProjectConfigFileName)" Destination="$(OutDir)..\Web.config" />
+  </Target>
   <ProjectExtensions>
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
