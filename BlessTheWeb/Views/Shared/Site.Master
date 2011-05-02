@@ -6,6 +6,9 @@
 <head runat="server">
     <title>Indulge Me - <asp:ContentPlaceHolder ID="TitleContent" runat="server" /></title>
 	<meta charset="UTF-8">	
+    <!--
+    Ver <%=System.Reflection.Assembly.GetAssembly(typeof(MvcApplication)).GetName().Version.ToString()%>
+    -->
 	<link rel="stylesheet" href="/content/im.css" />
     <!--[if IE 6]>
     <style type="text/css">
@@ -34,8 +37,6 @@
 	    </div>
 	    <div id="footer-image"><div id="god"></div></div>
     </div>
-
-    <div id="v"><%=System.Reflection.Assembly.GetAssembly(typeof(MvcApplication)).GetName().Version.ToString()%></div>
 
      <%Html.RenderPartial("~/Views/Shared/Analytics.ascx"); %>
 </body>
