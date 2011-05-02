@@ -265,15 +265,17 @@
     </PropertyGroup>
 
   <Target Name="AfterBuild">
-      <Message Text="Transform $(ProjectConfigFileName)"/>
-      <Message Text="config = @(AppConfigWithTargetPath)" />
-      <Message Text="outdir=$(OutDir)" />
-      <TransformXml Source="Web.config"
-                    Transform="$(ProjectConfigFileName)"
-                    Destination="$(OutDir)..\Web.config" />
-
       <AspNetCompiler VirtualPath="temp" PhysicalPath="$(ProjectDir)" Condition="$(MvcBuildViews)=='true'" />
   </Target>
+
+    <Target Name="TransformConfig">
+        <Message Text="Transform $(ProjectConfigFileName)"/>
+        <Message Text="config = @(AppConfigWithTargetPath)" />
+        <Message Text="outdir=$(OutDir)" />
+        <TransformXml Source="Web.config"
+                      Transform="$(ProjectConfigFileName)"
+                      Destination="$(OutDir)..\Web.config" />
+    </Target>
 
   <ProjectExtensions>
     <VisualStudio>
