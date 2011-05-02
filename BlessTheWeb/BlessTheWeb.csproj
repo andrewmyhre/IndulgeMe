@@ -44,7 +44,7 @@
     <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
   </PropertyGroup>
     <PropertyGroup>
-        <ProjectConfigFileName>Web.config</ProjectConfigFileName>
+        <ProjectConfigFileName>Web.debug.config</ProjectConfigFileName>
     </PropertyGroup>
   <ItemGroup>
     <Reference Include="AutoMapper">
@@ -249,7 +249,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\MSBuildCommunityTasks\MSBuild.Community.Tasks.Targets" />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets. -->
   <Target Name="BeforeBuild">
@@ -259,13 +259,22 @@
     <!--Modify Assembly Info-->
     <AssemblyInfo CodeLanguage="CS" OutputFile="Properties\AssemblyInfo.cs" AssemblyCopyright="Copyright © your company 2009" AssemblyVersion="$(Version)" AssemblyFileVersion="$(Version)" />
   </Target>
-  <Target Name="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
-      <TransformXml Source="@(AppConfigWithTargetPath)"
-                    Transform="$(ProjectConfigFileName)"
-                    Destination="@(AppConfigWithTargetPath->'$(OutDir)%(TargetPath)')" />
 
-      <AspNetCompiler VirtualPath="temp" PhysicalPath="$(ProjectDir)" />
+    <PropertyGroup>
+        <ConfigFilename>web.config</ConfigFilename>
+    </PropertyGroup>
+
+  <Target Name="AfterBuild">
+      <Message Text="Transform $(ProjectConfigFileName)"/>
+      <Message Text="config = @(AppConfigWithTargetPath)" />
+      <Message Text="outdir=$(OutDir)" />
+      <TransformXml Source="Web.config"
+                    Transform="$(ProjectConfigFileName)"
+                    Destination="$(OutDir)..\Web.config" />
+
+      <AspNetCompiler VirtualPath="temp" PhysicalPath="$(ProjectDir)" Condition="$(MvcBuildViews)=='true'" />
   </Target>
+
   <ProjectExtensions>
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
