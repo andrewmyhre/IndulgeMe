@@ -169,6 +169,7 @@
     <Content Include="favicon.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="robots.txt" />
     <Content Include="Scripts\home.js" />
     <Content Include="Scripts\wall.js" />
     <Content Include="sound-config.xml" />

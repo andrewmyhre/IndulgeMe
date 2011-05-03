@@ -8,5 +8,6 @@ namespace BlessTheWeb.Models
         public Sin Sin { get; set; }
         public decimal TotalDonated { get; set; }
         public int TotalDonationCount { get; set; }
+        public string ImageAlt { get; set; }
     }
 }

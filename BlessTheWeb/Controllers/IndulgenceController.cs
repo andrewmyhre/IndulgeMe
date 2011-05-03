@@ -44,6 +44,15 @@ namespace BlessTheWeb.Controllers
 
             absolutionViewModel.TotalDonationCount = absolutionViewModel.Sin.AllAbsolutions.Count();
             absolutionViewModel.TotalDonated = absolutionViewModel.Sin.AllAbsolutions.Sum(a => a.AmountDonated);
+            absolutionViewModel.ImageAlt =
+                string.Format("{0} {1} donated {2:c} to {3} on the {4} of {5:MMMM}, {5:yyyy}",
+                absolutionViewModel.Indulgence.Confession,
+                absolutionViewModel.Indulgence.Name,
+                absolutionViewModel.Indulgence.AmountDonated,
+                absolutionViewModel.Indulgence.CharityName,
+                absolutionViewModel.Indulgence.DateConfessed,
+                TextUtils.DayOfMonth(absolutionViewModel.Indulgence.DateConfessed),
+                absolutionViewModel.Indulgence);
 
             return View(absolutionViewModel);
         }

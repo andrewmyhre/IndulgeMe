@@ -111,6 +111,7 @@
     <Compile Include="Sin.cs" />
     <Compile Include="SinAggregator.cs" />
     <Compile Include="SiteSummaryInfo.cs" />
+    <Compile Include="TextUtils.cs" />
     <Compile Include="Trawlers\ISinTrawler.cs" />
     <Compile Include="Trawlers\IWebPageDownloader.cs" />
     <Compile Include="Trawlers\TextsFromLastNightSinTrawler.cs" />

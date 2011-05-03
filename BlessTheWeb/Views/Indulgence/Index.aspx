@@ -21,7 +21,7 @@
   <div class="aa">
 <%Html.RenderPartial("ShareThis", new ShareViewModel{Tweet=Model.Indulgence.Confession}); %>
 <div class="indulgence">
-<img src="/content/indulgences/<%=Model.Indulgence.Id.IdValue() %>/indulgence_100.png" />
+<img src="/content/indulgences/<%=Model.Indulgence.Id.IdValue() %>/indulgence_100.png" alt="<%:Model.ImageAlt %>" />
 </div>
 
 <div style="clear:both" />

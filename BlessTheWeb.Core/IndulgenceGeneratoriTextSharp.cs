@@ -59,7 +59,7 @@ namespace BlessTheWeb.Core
             // attribution
             List<Phrase> phrases = new List<Phrase>();
             phrases.Add(new Phrase("On this ", trajanProAttribution));
-            phrases.Add(new Phrase(DayOfMonth(indulgence.DateConfessed), trajanProBoldSmall));
+            phrases.Add(new Phrase(TextUtils.DayOfMonth(indulgence.DateConfessed), trajanProBoldSmall));
             phrases.Add(new Phrase(" day of ", trajanProAttribution));
             phrases.Add(new Phrase(string.Format("{0:MMMM}", indulgence.DateConfessed), trajanProBoldSmall));
             phrases.Add(new Phrase(" in the year of our Lord ", trajanProAttribution));
@@ -90,18 +90,6 @@ namespace BlessTheWeb.Core
             GhostscriptWrapper.GeneratePageThumb(pdfFilename, thumb4Filename, 1, 10, 10);
         }
 
-        private static string DayOfMonth(DateTime dateConfessed)
-        {
-            if (dateConfessed.Day > 10 && dateConfessed.Day < 14)
-                return (dateConfessed.Day + "th");
-            if (dateConfessed.Day.ToString().EndsWith("1"))
-                return (dateConfessed.Day + "st");
-            if (dateConfessed.Day.ToString().EndsWith("2"))
-                return dateConfessed.Day + "nd";
-            if (dateConfessed.Day.ToString().EndsWith("3"))
-                return dateConfessed.Day + "rd";
-            return dateConfessed.Day + "th";
-        }
 
         public class ParchmentPageEventHelper : PdfPageEventHelper
         {
