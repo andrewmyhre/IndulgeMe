@@ -50,6 +50,10 @@
     <Reference Include="AutoMapper">
       <HintPath>..\libs\AutoMapper.dll</HintPath>
     </Reference>
+    <Reference Include="EmailProcessing, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\libs\EmailProcessing.dll</HintPath>
+    </Reference>
     <Reference Include="Hammock, Version=1.0.0.0, Culture=neutral, PublicKeyToken=c148cfba29ed1a4d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\libs\Hammock.dll</HintPath>
@@ -229,10 +233,6 @@
     <ProjectReference Include="..\BlessTheWeb.Core\BlessTheWeb.Core.csproj">
       <Project>{2CF441BC-21A6-40CC-BDE8-3D9A985FF0A2}</Project>
       <Name>BlessTheWeb.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\EmailProcessing\EmailProcessing\EmailProcessing.csproj">
-      <Project>{F511818D-59DF-4358-8946-10FB3933E5B2}</Project>
-      <Name>EmailProcessing</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

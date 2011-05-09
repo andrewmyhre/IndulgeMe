@@ -48,6 +48,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\libs\AWSSDK.dll</HintPath>
     </Reference>
+    <Reference Include="EmailProcessing, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\libs\EmailProcessing.dll</HintPath>
+    </Reference>
     <Reference Include="Esent.Interop">
       <HintPath>lib\Esent.Interop.dll</HintPath>
     </Reference>
@@ -157,12 +161,6 @@
     <Content Include="fonts\TrajanPro-Regular.otf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\EmailProcessing\EmailProcessing\EmailProcessing.csproj">
-      <Project>{F511818D-59DF-4358-8946-10FB3933E5B2}</Project>
-      <Name>EmailProcessing</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

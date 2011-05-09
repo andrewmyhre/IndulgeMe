@@ -3,9 +3,6 @@
     <name>Exception</name>
     <from>andrew.myhre@gmail.com</from>
     <subject>indulgeme.andrewmyhre.com: unhandled exception</subject>
-    <html>
-        {message}
-    </html>
     <text>
         {message}
     </text>
