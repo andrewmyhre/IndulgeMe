@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.Caching;
 using System.Web.Mvc;
@@ -119,7 +120,20 @@ namespace JustConfessing
             {
             }
 
-            _logger.Fatal("Application error at " + (!string.IsNullOrWhiteSpace(url) ? url : "unknown page"), lastException);
+            StringBuilder message = new StringBuilder();
+            message.AppendLine(string.Format("Application error at {0}", url));
+
+            if (Request.UrlReferrer == null)
+            {
+                message.AppendLine("Possible attack");
+                message.AppendLine(string.Format("Request from:{0} ({1})\n", Request.UserHostName, Request.UserHostAddress));
+                message.AppendLine(string.Format("User-agent: {0}", Request.UserAgent));
+                message.AppendLine(string.Format("User languages: {0}", string.Join(", ", Request.UserLanguages)));
+                foreach(var key in Request.ServerVariables.AllKeys)
+                    message.AppendLine(string.Format("{0}: {1}", key, Request.ServerVariables[key]));
+            }
+
+            _logger.Fatal(message, lastException);
         }
 
         protected void Application_BeginRequest(object sender, EventArgs e)
