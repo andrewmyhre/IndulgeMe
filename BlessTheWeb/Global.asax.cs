@@ -104,8 +104,14 @@ namespace JustConfessing
                 TotalDonated = session.Query<Indulgence>("BlessedIndulgences").ToList().Sum(a => a.AmountDonated);
             }
 
-            EmailFacade = EmailFacadeFactory.CreateFromConfiguration();
-            EmailFacade.LoadTemplates();
+            try
+            {
+                EmailFacade = EmailFacadeFactory.CreateFromConfiguration();
+                EmailFacade.LoadTemplates();
+            } catch (Exception e)
+            {
+                _logger.Fatal("Failed to load email sender", e);
+            }
 
         }
 
