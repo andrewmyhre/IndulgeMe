@@ -25,14 +25,17 @@ namespace BlessTheWeb
 
         private void Send(string logMessage)
         {
-            MvcApplication.EmailFacade.AddEmailToQueue(
-                new string[] { "andrew.myhre@gmail.com" },
-                "Exception",
-                new Dictionary<string, string>()
-                    {
-                        {"message", logMessage}
-                    },
-                new FileInfo[] {  });
+            try
+            {
+                MvcApplication.EmailFacade.AddEmailToQueue(
+                    new string[] {"andrew.myhre@gmail.com"},
+                    "Exception",
+                    new Dictionary<string, string>()
+                        {
+                            {"message", logMessage}
+                        },
+                    new FileInfo[] {});
+            } catch {}
         }
 
         protected override void Append(LoggingEvent[] loggingEvents)
