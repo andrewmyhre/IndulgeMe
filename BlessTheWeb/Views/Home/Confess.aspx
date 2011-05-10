@@ -12,12 +12,12 @@
 <div id="select-charity">
     <h1>You want to repent for the sin of<br /> <em id="confession">"<%=Model.Confession %>"</em></h1>
     <h2><%= ViewData["AbsolutionMessage"]%></h2>
-    <p>Find a charity to donate to</p>
+    <p>Select a charity:</p>
     <label id="chosen"></label>
     <input type="hidden" id="con" value="<%=Model.Confession %>" />
     <input type="hidden" id="cid" value="<%=ViewData["cid"] %>" />
 <div id="charitysearch">
-        <p id="p"></p>
+        <p id="p"><img src="/Content/ajax-loader.gif" /></p>
         <ul id="charities">
         
         </ul>

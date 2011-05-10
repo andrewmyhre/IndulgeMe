@@ -189,26 +189,38 @@ border-radius: 15px;
 {
     list-style:none;
     text-align:left;
-    width:32%;
+    width:100%;
     float:left;
+margin-top:0.5em;    
+}
+#select-charity #charities li:hover
+{
+background-color:#FFFFFF;
+cursor:pointer;
 }
 #select-charity #charities li div
 {
-
 float:left;
-width:310px;
-margin-top:0.5em;
-text-align:center;
 }
-#select-charity #charities li div a img
+#select-charity #charities li div.row
+{
+
+vertical-align:middle;
+margin-right:20px;
+width:100%;
+}
+#select-charity #charities li a div div img
 {
     border:0;
+    vertical-align:middle;
 }
 
-#select-charity #charities li div a.cn
+#select-charity #charities li div div.cn
 {
+    width:400px;
+    float:left
 }
-#select-charity #charities li div a.cl
+#select-charity #charities li div div.cl
 {
     float:left;
     width:150px;
