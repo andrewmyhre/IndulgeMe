@@ -152,6 +152,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\123.png" />
+    <Content Include="Content\ajax-loader.gif" />
     <Content Include="Content\blank.css" />
     <Content Include="Content\emailTemplates\Exception.xml" />
     <Content Include="Content\emailTemplates\IndulgenceCreated.xml" />
