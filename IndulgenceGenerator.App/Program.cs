@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using BlessTheWeb.Core;
+using BlessTheWeb.Core.Repository;
 using btwc=BlessTheWeb.Core;
 
 namespace IndulgenceGenerator.App
@@ -15,7 +16,7 @@ namespace IndulgenceGenerator.App
         {
             Stopwatch sw = new Stopwatch();
             sw.Start();
-            var ig = new btwc.IndulgenceGeneratoriTextSharp();
+            var ig = new btwc.IndulgenceGeneratoriTextSharp(new FileSystemStorage());
 
             try
             {
@@ -29,9 +30,11 @@ namespace IndulgenceGenerator.App
                                          DateConfessed = DateTime.Now
                                      };
 
-                ig.Generate(indulgence,
-                    Path.Combine(Environment.CurrentDirectory, "output\\indulgence.pdf"), Path.Combine(Environment.CurrentDirectory, "output\\indulgence.png"), "charity name",
-                    Path.Combine(Environment.CurrentDirectory, "fonts"), Path.Combine(Environment.CurrentDirectory, "content"));
+                ig.Generate(indulgence, 
+                    Path.Combine(Environment.CurrentDirectory, "fonts"), 
+                    Path.Combine(Environment.CurrentDirectory, "content"),
+                    "parchment3",
+                    "1.pdf","1_1.png","1_2.png","1_3.png","1_4.png");
             } catch( Exception ex)
             {
                 Console.WriteLine(ex.Message);

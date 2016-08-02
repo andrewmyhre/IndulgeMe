@@ -4,12 +4,12 @@ namespace BlessTheWeb.Core
 {
     public class Indulgence
     {
-        public string Id { get; set; }
+        public object Id { get; set; }
         public string Confession{ get; set;}
         public DateTime DateConfessed { get; set; }
         public bool IsBlessed { get; set; }
         public bool IsConfession { get; set; }
-        public string SinId { get; set; }
+        public Guid SinGuid { get; set; }
         public int CharityId { get; set; }
         public decimal AmountDonated { get; set; }
         public string Name { get; set;}
@@ -18,5 +18,7 @@ namespace BlessTheWeb.Core
         public bool Tweeted { get; set; }
         public string DonorEmailAddress { get; set; }
         public string CharityName { get; set; }
+        public Guid Guid { get; set; }
+        public string BackgroundImageName { get; set; }
     }
 }

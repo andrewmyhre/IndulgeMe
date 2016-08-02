@@ -1,0 +1,28 @@
+﻿@model BlessTheWeb.MVC5.Models.AbsolutionsViewModel
+
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="indulgence-wall">
+    <h2>All Indulgences</h2>
+    @foreach(var indulgence in Model.Indulgences)
+    {
+    <div class="indulgence">
+        <a href="/indulgence/@indulgence.Guid"><img src="/indulgence/image/@indulgence.Guid/3" /></a>
+        <p><a href="/indulgence/@indulgence.Guid">@indulgence.Name, @indulgence.DateConfessed.ToString("hh:mm dd/MM/yyyy")</a></p>
+    </div>    
+    }
+    <div class="clearfix"></div>
+    @if (Model.ShowPreviousPageLink) {
+        @Html.ActionLink("Previous Page", "List", "Indulgence", new {page=Model.PreviousPage}, null) 
+    }
+    @for(int i=Model.PagingStart;i<Model.PagingEnd;i++) {
+    <span>@i</span>
+    }
+    @if (Model.ShowNextPageLink) {
+        @Html.ActionLink("Next Page", "List", "Indulgence", new {page=Model.NextPage}, null) 
+    }
+
+</div>

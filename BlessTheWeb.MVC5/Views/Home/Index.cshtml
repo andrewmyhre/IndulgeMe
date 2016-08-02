@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+@section scripts {
+    <script type="text/javascript" src="/scripts/home.js"></script>
+}
+@if (ViewData["ShowBlessing"] != null && (bool)ViewData["ShowBlessing"] == true)
+{
+    <h2 class="congratulations">Congratulations! Consider yourself blessed.</h2>
+    <EMBED src="/content/10277-m-001.mp3" autostart=true loop=false volume=100 hidden=true><NOEMBED><BGSOUND src="/content/10277-m-001.mp3"></NOEMBED>
+}
+<div class="jumbotron">
+    <h1>Bless The Web</h1>
+    <p class="lead"><em>@Model.SiteInfo.TotalDonated.ToString("c")</em> donated to charity, <em>@Model.SiteInfo.TotalAbsolvedSins</em> indulgences granted</p>
+</div>
+
+<div>
+    <img src="/content/123.png" />
+</div>
+
+<div id="confess">
+    <h2>Confess to a sin</h2>
+    @using (Html.BeginForm("BeginConfession", "Home", FormMethod.Post))
+    {
+        <input type="text" name="confession" id="confessbox" class="watermarkOn" maxlength="150" value="Your confession..."/>
+        <input type="submit" value="Repent!" id="repentbutton"/>
+        Html.EndForm();
+    }
+</div>
+
+<div id="recently">
+    <h2>Recently Blessed</h2>
+    <ul></ul>
+</div>
+
+<div style="clear:both;"></div>
+<div style="background-color:transparent;height:160px"></div>

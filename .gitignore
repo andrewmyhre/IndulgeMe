@@ -11,3 +11,5 @@ App_Data/
 *Publish.xml
 TweetOutbox
 /BlessTheWeb/Content/indulgences/
+packages/
+.vs

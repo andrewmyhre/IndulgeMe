@@ -4,27 +4,29 @@ using System.Linq;
 using BlessTheWeb.Core;
 using BlessTheWeb.Core.Trawlers;
 using log4net;
-using Raven.Client;
-using Raven.Client.Document;
+using BlessTheWeb.Core.Repository;
+using Ninject;
 
 namespace BlessTheWeb.Trawler
 {
     class Program
     {
-        private static IDocumentStore _ravenStore = null;
-        private static IDocumentSession _ravenSession = null;
+        private static IDatabase _db = null;
 
         private static ILog log = LogManager.GetLogger("program");
-        static List<ISinTrawler> _trawlers = new List<ISinTrawler>();
+        static IEnumerable<ISinTrawler> _trawlers = null;
 
         static void Main(string[] args)
         {
             log4net.Config.XmlConfigurator.Configure();
+            var kernel = new StandardKernel();
+            kernel.Bind<ISinTrawler>().To<TextsFromLastNightSinTrawler>();
+            kernel.Bind<IWebPageDownloader>().To<WebPageDownloader>();
+            kernel.Bind<IDatabase>().To<InMemoryDatabase>();
+            kernel.Bind<IDatabaseSession>().To<InMemoryDatabaseSession>();
 
-            log.Debug("Initialising store...");
-            InitializeRaven();
-
-            _trawlers.Add(new TextsFromLastNightSinTrawler(new WebPageDownloader()));
+            _db = kernel.Get<IDatabase>();
+            _trawlers = kernel.GetAll<ISinTrawler>();
 
             foreach (var trawler in _trawlers)
             {
@@ -32,39 +34,29 @@ namespace BlessTheWeb.Trawler
                 var sins = trawler.GetSins();
                 log.DebugFormat("Persisting {0} sins...", sins.Sins.Count());
                 StoreSins(sins);
-                log.Debug("Writing to database...");
-                _ravenSession.SaveChanges();
                 log.Debug("Done");
             }
-
-            _ravenSession.Dispose();
         }
 
         private static void StoreSins(TrawlerResult sins)
         {
-            foreach (var sin in sins.Sins)
+            using (var session = _db.OpenSession())
             {
-                try
+                foreach (var sin in sins.Sins)
                 {
-                    _ravenSession.Store(sin);
-                    log.DebugFormat("Stored: {0}", sin.Content);
+                    try
+                    {
+                        session.Store(sin);
+                        log.DebugFormat("Stored: {0}", sin.Content);
+                    }
+                    catch (Exception ex)
+                    {
+                        log.Fatal("fail", ex);
+                        Environment.Exit(-1);
+                    }
                 }
-                catch (Exception ex)
-                {
-                    log.Fatal("fail", ex);
-                    Environment.Exit(-1);
-                }
+                session.SaveChanges();
             }
-        }
-
-        private static void InitializeRaven()
-        {
-            _ravenStore = new DocumentStore() { Url = "http://localhost:8080" };
-            _ravenStore.Initialize();
-
-            new RavenIndexManager().SetUpIndexes(_ravenStore.OpenSession());
-
-            _ravenSession = _ravenStore.OpenSession();
         }
     }
 }

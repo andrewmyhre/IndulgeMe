@@ -1,0 +1,25 @@
+﻿@model BlessTheWeb.MVC5.Models.IndulgencesViewModel
+
+@{
+    ViewBag.Title = "View";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div id="indulgence-view">
+    @if (ViewData["ShowBlessing"] != null && (bool)ViewData["ShowBlessing"] == true)
+    {
+    <h2 class="congratulations">Congratulations! Consider yourself blessed.</h2>
+
+    <script type="text/javascript">    $('.congratulations').delay(5000).slideUp();</script>
+    }
+
+    <div class="aa">
+        @{ Html.RenderPartial("ShareThis", new BlessTheWeb.MVC5.Models.ShareViewModel {Tweet = Model.Indulgence.Confession}); }
+        <div class="indulgence">
+            <img src="/indulgence/image/@Model.Indulgence.Guid/1" alt="@Html.Raw(Model.ImageAlt)" />
+        </div>
+
+        <div style="clear:both" />
+        <p><a href="/indulgences/list">View more indulgences</a></p>
+        <p><a href="/">God hates your sin. Confess again!</a></p>
+    </div>
+</div>

@@ -4,20 +4,20 @@ using System.Linq;
 using System.Text;
 using BlessTheWeb.Core.Trawlers;
 using log4net;
-using Raven.Client;
+using BlessTheWeb.Core.Repository;
 
 namespace BlessTheWeb.Core
 {
     public class SinAggregator
     {
-        private IDocumentSession _ravenSession = null;
+        private IDatabase _db = null;
 
         private ILog log = LogManager.GetLogger("SinAggregator");
         List<ISinTrawler> _trawlers = new List<ISinTrawler>();
 
-        public SinAggregator(IDocumentSession ravenSession)
+        public SinAggregator(IDatabase db)
         {
-            _ravenSession = ravenSession;
+            _db = db;
         }
 
         public void AddTrawler(ISinTrawler trawler)
@@ -27,25 +27,28 @@ namespace BlessTheWeb.Core
 
         public void Trawl()
         {
-            foreach (var trawler in _trawlers)
+            using (var session = _db.OpenSession())
             {
-                log.DebugFormat("Trawling sins from {0}...", trawler.SourceName);
-                var sins = trawler.GetSins();
-                log.DebugFormat("Persisting {0} sins...", sins.Sins.Count());
-                StoreSins(sins);
-                log.Debug("Writing to database...");
-                _ravenSession.SaveChanges();
-                log.Debug("Done");
+                foreach (var trawler in _trawlers)
+                {
+                    log.DebugFormat("Trawling sins from {0}...", trawler.SourceName);
+                    var sins = trawler.GetSins();
+                    log.DebugFormat("Persisting {0} sins...", sins.Sins.Count());
+                    StoreSins(session,sins);
+                    log.Debug("Writing to database...");
+                    session.SaveChanges();
+                    log.Debug("Done");
+                }
             }
         }
 
-        private void StoreSins(TrawlerResult sins)
+        private void StoreSins(IDatabaseSession session, TrawlerResult sins)
         {
             foreach (var sin in sins.Sins)
             {
                 try
                 {
-                    _ravenSession.Store(sin);
+                    session.Store(sin);
                     log.DebugFormat("Stored: {0}", sin.Content);
                 }
                 catch (Exception ex)

@@ -1,0 +1,133 @@
+    html, body, div, span, object, iframe,
+    h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+    abbr, address, cite, code,
+    del, dfn, em, img, ins, kbd, q, samp,
+    small, strong, sub, sup, var,
+    b, i,
+    dl, dt, dd, ol, ul, li,
+    fieldset, form, label, legend,
+    table, caption, tbody, tfoot, thead, tr, th, td,
+    article, aside, figure, footer, header, 
+    hgroup, menu, nav, section, menu,
+    time, mark, audio, video {
+      margin:0;
+      padding:0;
+      border:0;
+      outline:0;
+      font-size:16pt;
+      vertical-align:baseline;
+      background:transparent;
+      font-family:Georgia;
+      color:#777777;
+    }              
+    label { color:Black;}    
+    
+    h2.congratulations{font-size:30pt;color:orange;background:red;}
+    li { list-style:none;margin-top:0.5em;margin-bottom:0.5em;}
+    li a:hover { background-color:Lime;}
+    ul.sins { margin:1em;}
+    input {font-size:24pt;}
+    #confessbox { font-size:24pt;line-height:26pt;width:60%;}
+    #repentbutton,.button{font-size:24pt;line-height:26pt;font-family:Georgia,arial}
+    div.recently
+    {
+        margin:auto auto auto auto;
+        padding:8px;
+        width:40%;
+    }
+    div.left { float :left;}
+    div.right { float:right;}
+    a.action { 
+
+    color:Red;
+    background-color:#dddddd;
+    padding:0.6em;
+    -webkit-border-radius: 3px;
+-moz-border-radius: 3px;
+border-radius: 3px;}
+
+    article, aside, figure, footer, header, 
+    hgroup, nav, section { display:block; }
+    h1 { font-size:30pt;}
+    nav ul { list-style:none; }
+    
+    blockquote, q { quotes:none; }
+    
+    blockquote:before, blockquote:after,
+    q:before, q:after { content:''; content:none; }
+    
+    a { margin:0; padding:0; font-size:100%; vertical-align:baseline; background:transparent; }
+    
+    ins { background-color:#ff9; color:#000; text-decoration:none; }
+    
+    mark { background-color:#ff9; color:#000; font-style:italic; font-weight:bold; }
+    
+    del { text-decoration: line-through; }
+    
+    abbr[title], dfn[title] { border-bottom:1px dotted #000; cursor:help; }
+    
+    /* tables still need cellspacing="0" in the markup */
+    table { border-collapse:collapse; border-spacing:0; }
+    
+    hr { display:block; height:1px; border:0; border-top:1px solid #ccc; margin:1em 0; padding:0; }
+    
+    input, select { vertical-align:middle; }
+    /* END RESET CSS */
+      
+  html,body {height:100%; }      
+      
+  #top { position: absolute; top: 0; right: 0; }
+    
+  #wrapper {
+   font-family: Times New Roman, Arial;
+   font-size: 14px;
+   background: #fff ;
+    background: rgba(255,255,255,0.8)
+ 
+   padding: 30px 50px 10px;
+   margin: 0 auto;
+   margin-top:35px;
+   width: 80%;
+   border: #eee solid 3px;
+   border-top: 0;
+   -moz-border-radius: 0 0 10px 10px ;
+   -webkit-border-radius: 10px;
+    }
+  
+  #god { 
+  background: transparent url(jesus.png) no-repeat center bottom; 
+  width: 400px; height: 325px; position: absolute; 
+  right: 0; 
+  bottom: 0; }
+        
+  html { 
+background: transparent url(footer.png) no-repeat center bottom;
+  display: block;
+  }
+
+body {   background: transparent url(god.png) no-repeat center bottom; }
+        
+  p { margin: 0 0 30px; }
+
+  #siteInfo {
+    float:right;
+  }
+
+#indulgence-wall .indulgence
+{
+    float:left;
+    font-size:10pt;
+    margin:10px;
+}
+
+#indulgence-view .indulgence
+{
+    margin:auto auto auto auto;
+}
+
+#select-charity p, #select-charity h2
+{
+    margin-top:0.5em;
+}
+
+.hidden { display:none; }
