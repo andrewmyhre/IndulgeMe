@@ -10,10 +10,7 @@
     <h2 class="congratulations">Congratulations! Consider yourself blessed.</h2>
     <EMBED src="/content/10277-m-001.mp3" autostart=true loop=false volume=100 hidden=true><NOEMBED><BGSOUND src="/content/10277-m-001.mp3"></NOEMBED>
 }
-<div class="jumbotron">
-    <h1>Bless The Web</h1>
-    <p class="lead"><em>@Model.SiteInfo.TotalDonated.ToString("c")</em> donated to charity, <em>@Model.SiteInfo.TotalAbsolvedSins</em> indulgences granted</p>
-</div>
+<p class="lead"><em>@Model.SiteInfo.TotalDonated.ToString("c")</em> donated to charity, <em>@Model.SiteInfo.TotalAbsolvedSins</em> sins absolved</p>
 
 <div>
     <img src="/content/123.png" />
@@ -29,9 +26,10 @@
     }
 </div>
 
-<div id="recently">
+<div id="indulgence-wall" class="hidden">
     <h2>Recently Blessed</h2>
-    <ul></ul>
+    <div id="indulgences"></div>
+    <div class="clearfix"></div>
 </div>
 
 <div style="clear:both;"></div>

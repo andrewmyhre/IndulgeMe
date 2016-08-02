@@ -8,31 +8,20 @@
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Bless The Web", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+<body class="clearfix">
+    <div class="page">
+        <h1 class="masthead"><a href="/">Bless The Web</a></h1>
+        <div id="wrapper">
+            <ul id="nav">
+                <li><a href="/">Home</a></li>
+                <li>@Html.ActionLink("Browse Indulgences","List", "Indulgence")</li>
+            </ul>
+            @RenderBody()
+            <div id="footer">
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Browse Indulgences", "List", "Indulgence")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
-            </div>
+            <div class="push"></div>
         </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Bless The Web</p>
-        </footer>
+        <div id="footer-image"><div id="god"></div></div>
     </div>
 
     @Scripts.Render("~/bundles/jquery")

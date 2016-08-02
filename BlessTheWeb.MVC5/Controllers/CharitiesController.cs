@@ -50,21 +50,5 @@ namespace BlessTheWeb.MVC5.Controllers
                     Description=r.Description
                 });
         }
-
-        public IEnumerable<IndulgenceViewModel> LatestIndulgences()
-        {
-            var indulgences = _indulgeMeService.AllIndulgences(0, 10);
-            var vm = indulgences.Select(
-                i => new IndulgenceViewModel()
-                {
-                    AmountDonated = i.AmountDonated.ToString("c"),
-                    CharityName = i.CharityName,
-                    Confession = i.Confession,
-                    Date = i.DateConfessed.ToString("dd/MM/yyyy hh:mm"),
-                    Id = i.Id.ToString()
-                });
-
-            return vm.ToArray();
-        }
     }
 }

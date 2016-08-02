@@ -1,19 +1,17 @@
 ﻿$(document).ready(function () {
-    $.getJSON('/Api/GetLatest',
+    $.getJSON('/api/indulgenceapi/getlatest',
     function (data) {
         for (var i = 0; i < data.length; i++) {
-            $('#recently > ul')
-                .append('<li>'+
-                '<p><a href="/indulgences/' + data[i].Id + '">' + data[i].Confession + '</a></p>' +
-                '<p>'+
-                    '<a href="/indulgences/'+data[i].Id+'">#'+data[i].Id+'</a>' +
-                    '<span><strong>' + data[i].Name + '</strong>' +
-                    ' donated <strong>' + data[i].AmountDonated + '</strong> to <strong>'+data[i].CharityName+'</strong>'+
-                    '<span> on ' + data[i].Date + '</span>' +
-                    
-                '</p>'+
-                '</li>');
-        };
+            $('#indulgence-wall > #indulgences')
+                .append('<div class="indulgence">'+
+                    '<a href="/indulgence/' + data[i].Guid + '"><img src="' + data[i].ThumbnailUrl + '" /></a>' +
+                    '<p><a href="/indulgence/' + data[i].Guid + '">' + data[i].Date + '</a></p>' +
+                    '</div>');
+            }
+        if (data.length > 0) {
+            $('#indulgence-wall').removeClass('hidden');
+            $('#indulgence-wall').slideDown();
+        }
     });
 
     $("#confessbox").focus(function () {

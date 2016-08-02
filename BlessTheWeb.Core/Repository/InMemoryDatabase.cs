@@ -128,6 +128,9 @@ namespace BlessTheWeb.Core.Repository
                 indulgence.DonationReference = donationRef;
                 indulgence.AmountDonated = amount;
                 indulgence.IsBlessed = true;
+                var sin = GetSinByGuid(indulgence.SinGuid);
+                sin.TotalDonationCount++;
+                sin.TotalDonated += amount;
                 session.SaveChanges();
             }
         }

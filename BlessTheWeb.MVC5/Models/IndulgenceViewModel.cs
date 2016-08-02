@@ -13,5 +13,6 @@ namespace BlessTheWeb.MVC5.Models
         public string Date { get; set; }
         public string AmountDonated { get; set; }
         public string CharityName { get; set; }
+        public string ThumbnailUrl { get; internal set; }
     }
 }
