@@ -8,22 +8,22 @@ using System.Net.Http;
 using System.Text;
 using System.Web.Http;
 using BlessTheWeb.Data.NHibernate;
+using BlessTheWeb.Storage.AzureCdn;
 using NHibernate.Tool.hbm2ddl;
 
 namespace BlessTheWeb.MVC5.Controllers
 {
     public class ConfigController : ApiController
     {
-        private readonly IFileStorage _storage;
-
-        public ConfigController(IFileStorage storage)
+        public ConfigController()
         {
-            _storage = storage;
         }
 
         [HttpGet]
+        [Route("config/create-assets")]
         public string CreateAssets()
         {
+            var storage = new AzureFileStorage();
             var sb = new StringBuilder();
             string[] assets = new string[] {
                 "parchment.jpg",
@@ -46,13 +46,14 @@ namespace BlessTheWeb.MVC5.Controllers
                     localFile.Read(fileData, 0, fileData.Length);
                 }
 
-                _storage.Store(string.Concat(ConfigurationManager.AppSettings["AssetsRelativePath"], asset), fileData, true);
+                storage.Store(string.Concat(ConfigurationManager.AppSettings["AssetsRelativePath"], asset), fileData, true);
                 sb.AppendLine(string.Format("Stored {0}", asset));
             }
             return sb.ToString();
         }
 
         [HttpGet]
+        [Route("config/rebuild-database")]
         public string RebuildDatabase()
         {
             SessionFactory.RebuildDatabase();
