@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("JustConfessing.Core")]
+[assembly: AssemblyTitle("BlessTheWeb.Core")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("JustConfessing.Core")]
-[assembly: AssemblyCopyright("Copyright ©  2010")]
+[assembly: AssemblyProduct("BlessTheWeb.Core")]
+[assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("855b2528-4ddd-487e-b628-e6accf3d267a")]
+[assembly: Guid("ba63e9fa-0cec-447d-92e5-b8796db37018")]
 
 // Version information for an assembly consists of the following four values:
 //

@@ -2,6 +2,7 @@
 using System.Configuration;
 using System.Web.Hosting;
 using System.Xml.Linq;
+using Amazon.SimpleEmail;
 using Amazon.SimpleEmail.Model;
 
 namespace BlessTheWeb.Core
@@ -9,18 +10,18 @@ namespace BlessTheWeb.Core
     [Obsolete("Use EmailProcessing", true)]
     public class AmazonSesIndulgenceEmailer : IIndulgenceEmailer
     {
-        private Amazon.SimpleEmail.AmazonSimpleEmailService service;
+        private Amazon.SimpleEmail.AmazonSimpleEmailServiceClient service;
         public void Send(Indulgence indulgence, string indulgenceFilePath)
         {
             service =
-                Amazon.AWSClientFactory.CreateAmazonSimpleEmailServiceClient(
+                new AmazonSimpleEmailServiceClient(
                     ConfigurationManager.AppSettings["awsAccessKeyId"],
                     ConfigurationManager.AppSettings["awsAccessSecret"]);
 
             SendEmailRequest request = new SendEmailRequest();
-            request.WithDestination(BuildDestination());
-            request.WithMessage(BuildMessage(indulgence));
-            request.WithSource("andrew.myhre@gmail.com");
+            request.Destination = BuildDestination();
+            request.Message=BuildMessage(indulgence);
+            request.Source="andrew.myhre@gmail.com";
 
             var response = service.SendEmail(request);
         }
@@ -42,24 +43,24 @@ namespace BlessTheWeb.Core
                 .Replace("@CharityName", indulgence.CharityName);
 
             Content subject = new Content();
-            subject.WithCharset("utf-8");
-            subject.WithData(subjectText);
+            subject.Charset = "utf-8";
+            subject.Data = subjectText;
 
             Content html = new Content();
-            html.WithCharset("UTF-8");
-            html.WithData(htmlBody);
+            html.Charset="UTF-8";
+            html.Data= htmlBody;
 
             Content text = new Content();
-            text.WithCharset("UTF-8");
-            text.WithData(textBody);
+            text.Charset="UTF-8";
+            text.Data=textBody;
 
             Body body = new Body();
-            body.WithHtml(html);
-            body.WithText(text);
+            body.Html=html;
+            body.Text=text;
 
             Message message = new Message();
-            message.WithBody(body);
-            message.WithSubject(subject);
+            message.Body=body;
+            message.Subject=subject;
 
             return message;
         }
@@ -67,7 +68,7 @@ namespace BlessTheWeb.Core
         private Destination BuildDestination()
         {
             Destination destination = new Destination();
-            destination.WithToAddresses("andrew.myhre@gmail.com");
+            destination.ToAddresses.Add("andrew.myhre@gmail.com");
             return destination;
         }
     }

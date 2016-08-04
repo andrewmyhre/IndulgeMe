@@ -1,16 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.30703</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{2CF441BC-21A6-40CC-BDE8-3D9A985FF0A2}</ProjectGuid>
+    <ProjectGuid>{BA63E9FA-0CEC-447D-92E5-B8796DB37018}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>BlessTheWeb.Core</RootNamespace>
     <AssemblyName>BlessTheWeb.Core</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -21,7 +20,6 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -31,51 +29,26 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'EC2|AnyCPU'">
-    <OutputPath>bin\EC2\</OutputPath>
-    <DefineConstants>TRACE;EC2</DefineConstants>
-    <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ABCpdf">
-      <HintPath>..\libs\ABCpdf.dll</HintPath>
+    <Reference Include="AWSSDK.Core, Version=3.1.0.0, Culture=neutral, PublicKeyToken=885c28607f98e604, processorArchitecture=MSIL">
+      <HintPath>..\packages\AWSSDK.Core.3.1.9.0\lib\net45\AWSSDK.Core.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="AWSSDK, Version=1.2.3.1, Culture=neutral, PublicKeyToken=cd2d24cd2bace800, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\libs\AWSSDK.dll</HintPath>
-    </Reference>
-    <Reference Include="EmailProcessing, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\libs\EmailProcessing.dll</HintPath>
-    </Reference>
-    <Reference Include="Esent.Interop">
-      <HintPath>lib\Esent.Interop.dll</HintPath>
+    <Reference Include="AWSSDK.SimpleEmail, Version=3.1.0.0, Culture=neutral, PublicKeyToken=885c28607f98e604, processorArchitecture=MSIL">
+      <HintPath>..\packages\AWSSDK.SimpleEmail.3.1.4.3\lib\net45\AWSSDK.SimpleEmail.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Ghostscript.NET, Version=1.2.0.0, Culture=neutral, PublicKeyToken=f85051de34525b59, processorArchitecture=MSIL">
       <HintPath>..\packages\Ghostscript.NET.1.2.0\lib\net40\Ghostscript.NET.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="itextsharp">
-      <HintPath>..\libs\itextsharp.dll</HintPath>
-    </Reference>
-    <Reference Include="log4net, Version=1.2.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\log4net.2.0.5\lib\net40-full\log4net.dll</HintPath>
+    <Reference Include="itextsharp, Version=5.5.9.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.9\lib\itextsharp.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Lucene.Net, Version=2.9.2.2, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>lib\Lucene.Net.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b9a188c8922137c6, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\libs\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="Spatial.Net">
-      <HintPath>lib\Spatial.Net.dll</HintPath>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.1.2.10\lib\2.0\log4net.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -86,6 +59,7 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
@@ -120,24 +94,12 @@
     <Compile Include="WebPageDownloader.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="content\home-parchment22.gif">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="content\parchment.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="content\YeOldeParchment3.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="content\YeOldeParchment3.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="gsdll32.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="gsdll64.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <Content Include="content\home-parchment22.gif" />
+    <Content Include="content\parchment.jpg" />
+    <Content Include="content\YeOldeParchment3.jpg" />
+    <Content Include="content\YeOldeParchment3.png" />
+    <Content Include="gsdll32.dll" />
+    <Content Include="gsdll64.dll" />
     <Content Include="lib\Esent.Interop.dll" />
     <Content Include="lib\ICSharpCode.NRefactory.dll" />
     <Content Include="lib\log4net.dll" />
@@ -146,19 +108,8 @@
     <Content Include="lib\Spatial.Net.dll" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="fonts\UECHIGOT.TTF">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="fonts\TrajanPro-Regular.otf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
+    <None Include="fonts\TrajanPro-Regular.otf" />
+    <None Include="fonts\UECHIGOT.TTF" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
