@@ -1,3 +1,5 @@
+using BlessTheWeb.Data.NHibernate;
+
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(BlessTheWeb.MVC5.App_Start.NinjectWebCommon), "Start")]
 [assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(BlessTheWeb.MVC5.App_Start.NinjectWebCommon), "Stop")]
 
@@ -12,6 +14,7 @@ namespace BlessTheWeb.MVC5.App_Start
     using Ninject.Web.Common;
     using Core;
     using Core.Repository;
+    using NHibernate;
     public static class NinjectWebCommon 
     {
         private static readonly Bootstrapper bootstrapper = new Bootstrapper();
@@ -62,10 +65,10 @@ namespace BlessTheWeb.MVC5.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            kernel.Bind<IIndulgeMeService>().To<IndulgeMeService>();
-            kernel.Bind<IDatabase>().To<InMemoryDatabase>();
             kernel.Bind<IFileStorage>().To<FileSystemStorage>();
             kernel.Bind<IIndulgenceGenerator>().To<IndulgenceGeneratoriTextSharp>();
-        }        
+            kernel.Bind<ISession>().ToMethod(x =>SessionFactory.Instance.OpenSession()).InRequestScope();
+            kernel.Bind<IIndulgeMeService>().To<NHibernateIndulgeMeService>();
+        }
     }
 }

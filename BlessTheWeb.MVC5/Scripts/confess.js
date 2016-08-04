@@ -23,19 +23,15 @@ function findCharities(q) {
     function (data) {
         $('#charities').empty();
         for (var i = 0; i < data.length; i++) {
+            var imageUrl = 'http://www.justgiving.com' + data[i].LogoFileName;
+            imageUrl='https://images.justgiving.com/image/23cc9334-f803-43cb-897a-ace65b7d98d7.PNG?template=size200x200';
             $('#charities')
-                .append($('<li id="' + data[i].Id + '"></li>')
-                    .append($('<a href="#"></a>')
+                .append($('<div class="col-xs-12 col-md-3 charity-card" id="' + data[i].Id + '"></div>')
+                    .append($('<a href="#" data-charityid="'+data[i].Id+'" data-charityname="'+data[i].Name+'"></a>')
                         .click(function () {
-                            choose($(this).parent().attr('id'), $(this).children('div').children('div.cn').text(), $(this).children('div').children('div.cn').html());
+                            choose($(this).parent().attr('id'), $(this).attr('data-charityname'));
                         })
-                        .append($('<div class="row"></div>')
-                    .append($('<div class="cl"></div>')
-                        .append($('<img src="http://www.justgiving.com' + data[i].LogoFileName + '"'
-                                    + ' alt="' + data[i].Name + '" title="' + data[i].Name + '" />')
-                        )
-                    ).append($('<div class="cn">'+data[i].Name+'</div>')))
-                    )
+                        .append($('<img src="'+imageUrl+'" alt="' + data[i].Name + '" title="' + data[i].Name + '" /><p>'+data[i].Name+'</div>')))
                 );
         }
         $('#charities').slideDown();
@@ -46,10 +42,10 @@ function findCharities(q) {
     return false;
 }
 
-function choose(charityid, charityName, charityHtml) {
+function choose(charityid, charityName) {
     $('#charityid').val(charityid);
     $('#charityname').val(charityName);
-    $('#chosen').html('Chosen charity: ' + charityHtml);
+    $('#chosen').html('Chosen charity: ' + charityName);
     $('#doredeem').prop('disabled', false);
     $('#charitysearch').slideUp();
     $('#id').removeClass('hidden');

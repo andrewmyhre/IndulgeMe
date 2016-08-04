@@ -15,14 +15,12 @@ namespace BlessTheWeb.MVC5.Controllers
     public class IndulgenceController : Controller
     {
         private readonly IIndulgeMeService _indulgeMeService;
-        private readonly IDatabase _db;
         const int pageSize = 12;
         private string contentPath = HostingEnvironment.MapPath("~/content");
 
-        public IndulgenceController(IIndulgeMeService indulgeMeService, IDatabase db)
+        public IndulgenceController(IIndulgeMeService indulgeMeService)
         {
             _indulgeMeService = indulgeMeService;
-            _db = db;
         }
 
         //
@@ -35,18 +33,18 @@ namespace BlessTheWeb.MVC5.Controllers
             }
 
             var absolutionViewModel = new IndulgencesViewModel();
-            absolutionViewModel.Indulgence = _db.GetIndulgenceByGuid(guid);
+            absolutionViewModel.Indulgence = _indulgeMeService.GetIndulgenceByGuid(guid);
             if (absolutionViewModel.Indulgence == null)
                 return HttpNotFound("Couldn't find that indulgence");
 
-            if (absolutionViewModel.Indulgence.SinGuid == null)
+            if (absolutionViewModel.Indulgence.Sin == null)
                 return HttpNotFound("Couldn't find that sin");
 
-            absolutionViewModel.Sin = _db.GetSinByGuid(absolutionViewModel.Indulgence.SinGuid);
-            absolutionViewModel.Sin.AllAbsolutions = _indulgeMeService.AllIndulgencesForSin(absolutionViewModel.Indulgence.SinGuid);
+            absolutionViewModel.Sin = absolutionViewModel.Indulgence.Sin;
+            absolutionViewModel.Sin.Indulgences = _indulgeMeService.AllIndulgencesForSin(absolutionViewModel.Indulgence.Sin).ToList();
 
-            absolutionViewModel.TotalDonationCount = absolutionViewModel.Sin.AllAbsolutions.Count();
-            absolutionViewModel.TotalDonated = absolutionViewModel.Sin.AllAbsolutions.Sum(a => a.AmountDonated);
+            absolutionViewModel.TotalDonationCount = absolutionViewModel.Sin.Indulgences.Count();
+            absolutionViewModel.TotalDonated = absolutionViewModel.Sin.Indulgences.Sum(a => a.AmountDonated);
             absolutionViewModel.ImageAlt =
                 string.Format("{0} {1} donated {2:c} to {3} on the {4} of {5:MMMM}, {5:yyyy}",
                 absolutionViewModel.Indulgence.Confession,
@@ -62,7 +60,7 @@ namespace BlessTheWeb.MVC5.Controllers
 
         public ActionResult GenerateImage(string guid)
         {
-            var indulgence = _db.GetIndulgenceByGuid(guid);
+            var indulgence = _indulgeMeService.GetIndulgenceByGuid(guid);
             if (indulgence == null)
             {
                 return new HttpNotFoundResult();
@@ -77,7 +75,7 @@ namespace BlessTheWeb.MVC5.Controllers
 
         public ActionResult Image(string guid, int size)
         {
-            var indulgence = _db.GetIndulgenceByGuid(guid);
+            var indulgence = _indulgeMeService.GetIndulgenceByGuid(guid);
             if (indulgence == null)
                 return HttpNotFound();
             return new FileContentResult(_indulgeMeService.GetIndulgenceImage(indulgence, size), "img/png");

@@ -45,6 +45,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Iesi.Collections, Version=4.0.0.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Iesi.Collections.4.0.0.4000\lib\net40\Iesi.Collections.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="JustGiving.Api.Data.Sdk, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\justgiving-sdk.1.6.12\lib\Net35\JustGiving.Api.Data.Sdk.dll</HintPath>
       <Private>True</Private>
@@ -53,8 +57,8 @@
       <HintPath>..\packages\justgiving-sdk.1.6.12\lib\Net35\JustGiving.Api.Sdk.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="log4net, Version=1.2.14.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
-      <HintPath>..\packages\log4net.2.0.4\lib\net45-full\log4net.dll</HintPath>
+    <Reference Include="log4net, Version=1.2.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.5\lib\net45-full\log4net.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -68,6 +72,10 @@
     </Reference>
     <Reference Include="Microsoft.Http.Extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\justgiving-sdk.1.6.12\lib\Net35\Microsoft.Http.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NHibernate, Version=4.0.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <HintPath>..\packages\NHibernate.4.0.4.4000\lib\net40\NHibernate.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
@@ -234,6 +242,7 @@
     <Compile Include="Controllers\LogApiController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\SdiController.cs" />
+    <Compile Include="Controllers\SinsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -255,6 +264,7 @@
     <Content Include="Content\blank.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\CharitySearch.html" />
     <Content Include="Content\emailTemplates\Exception.xml" />
     <Content Include="Content\emailTemplates\IndulgenceCreated.xml" />
     <Content Include="Content\emailTemplates\indulgenceEmail.xml" />
@@ -339,10 +349,11 @@
     <Content Include="Views\Indulgence\Index.cshtml" />
     <Content Include="Views\Indulgence\ShareThis.cshtml" />
     <Content Include="Views\Indulgence\List.cshtml" />
+    <Content Include="Views\Sins\Index.cshtml" />
+    <Content Include="Views\Sdi\FakeSdiView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Sdi\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -356,6 +367,10 @@
     <ProjectReference Include="..\BlessTheWeb.Core\BlessTheWeb.Core.csproj">
       <Project>{2cf441bc-21a6-40cc-bde8-3d9a985ff0a2}</Project>
       <Name>BlessTheWeb.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BlessTheWeb.Data.NHibernate\BlessTheWeb.Data.NHibernate.csproj">
+      <Project>{949df85b-dbc5-4678-9853-bec88d65c0f4}</Project>
+      <Name>BlessTheWeb.Data.NHibernate</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

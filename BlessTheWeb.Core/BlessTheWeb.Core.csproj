@@ -46,8 +46,9 @@
       <HintPath>..\packages\iTextSharp.5.5.9\lib\itextsharp.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
-      <HintPath>..\packages\log4net.1.2.10\lib\2.0\log4net.dll</HintPath>
+    <Reference Include="log4net, Version=1.2.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\log4net.2.0.5\lib\net45-full\log4net.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -78,9 +79,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\FileSystemStorage.cs" />
     <Compile Include="Repository\IFileStorage.cs" />
-    <Compile Include="Repository\IIndulgenceDatabase.cs" />
-    <Compile Include="Repository\InMemoryDatabase.cs" />
-    <Compile Include="Repository\InMemoryDatabaseSession.cs" />
     <Compile Include="Repository\IRavenRepository.cs" />
     <Compile Include="Sin.cs" />
     <Compile Include="SinAggregator.cs" />

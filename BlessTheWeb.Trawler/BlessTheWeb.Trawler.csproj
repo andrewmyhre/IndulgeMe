@@ -55,7 +55,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ninject.3.2.0.0\lib\net40\Ninject.dll</HintPath>
+      <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Raven.Client, Version=1.0.0.0, Culture=neutral, PublicKeyToken=37f41c7f99471593, processorArchitecture=MSIL">
@@ -82,6 +82,10 @@
     <ProjectReference Include="..\BlessTheWeb.Core\BlessTheWeb.Core.csproj">
       <Project>{2CF441BC-21A6-40CC-BDE8-3D9A985FF0A2}</Project>
       <Name>BlessTheWeb.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BlessTheWeb.Data.NHibernate\BlessTheWeb.Data.NHibernate.csproj">
+      <Project>{949df85b-dbc5-4678-9853-bec88d65c0f4}</Project>
+      <Name>BlessTheWeb.Data.NHibernate</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

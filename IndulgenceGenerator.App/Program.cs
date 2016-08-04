@@ -22,7 +22,7 @@ namespace IndulgenceGenerator.App
             {
                 var indulgence = new Indulgence()
                                      {
-                                         Id = "indulgences/1",
+                                         Id = 1,
                                          Confession = Text,
                                          Name = "Andrew",
                                          AmountDonated = 200,

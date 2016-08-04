@@ -13,12 +13,10 @@ namespace BlessTheWeb.MVC5.Controllers
 {
     public class SdiController : Controller
     {
-        private readonly IDatabase _db;
-        private readonly IndulgeMeService _indulgeMeService;
+        private readonly IIndulgeMeService _indulgeMeService;
 
-        public SdiController(IDatabase db, IndulgeMeService indulgeMeService)
+        public SdiController(IIndulgeMeService indulgeMeService)
         {
-            _db = db;
             _indulgeMeService = indulgeMeService;
         }
 
@@ -48,16 +46,16 @@ namespace BlessTheWeb.MVC5.Controllers
             if ((donationStatus != null && donationStatus.Status == "Accepted")
                 || ConfigurationManager.AppSettings["SkipDonationReferenceCheck"] == "true")
             {
-                var indulgence = _db.GetIndulgenceByGuid(guid);
                 if (donationStatus != null)
                 {
-                    _db.Absolve(guid, donationStatus.DonationId, donationStatus.DonationRef, donationStatus.Amount,
+                    _indulgeMeService.Absolve(guid, donationStatus.DonationId, donationStatus.DonationRef, donationStatus.Amount,
                         donationStatus.Reference);
                 } else if (ConfigurationManager.AppSettings["SkipDonationReferenceCheck"] == "true")
                 {
-                    _db.Absolve(guid, 1, "1", 10, "not-a-real-donation");
+                    _indulgeMeService.Absolve(guid, 1, "1", 10, "not-a-real-donation");
                 }
 
+                var indulgence = _indulgeMeService.GetIndulgenceByGuid(guid);
                 _indulgeMeService.GenerateIndulgence(indulgence, 
                     System.IO.Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "fonts"),
                     System.IO.Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "Content"));
@@ -72,5 +70,34 @@ namespace BlessTheWeb.MVC5.Controllers
 
             return HttpNotFound();
         }
+
+        [HttpGet]
+        public ActionResult FakeSdi(string guid, int charityId, decimal amount, string exitUrl, string currency,string reference)
+        {
+            return View(new FakeSdiViewModel
+            {
+                CharityId = charityId,
+                Amount = amount,
+                ExitUrl = exitUrl,
+                Currency=currency,
+                Reference = reference
+            });
+        }
+
+        private static Random r = new Random();
+        [HttpPost]
+        public ActionResult FakeSdi(int charityId, decimal amount, string exitUrl, string currency, string reference)
+        {
+            return Redirect(exitUrl.Replace("JUSTGIVING-DONATION-ID", r.Next(1000000).ToString()));
+        }
+
+    }
+    public class FakeSdiViewModel
+    {
+        public int CharityId { get; set; }
+        public decimal Amount { get; set; }
+        public string ExitUrl { get; set; }
+        public string Currency { get; set; }
+        public string Reference { get; set; }
     }
 }

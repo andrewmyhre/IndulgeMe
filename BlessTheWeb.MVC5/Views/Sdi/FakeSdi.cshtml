@@ -1,0 +1,20 @@
+﻿@model BlessTheWeb.MVC5.Controllers.FakeSdiViewModel
+
+@{
+    ViewBag.Title = "FakeSdiView";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>This page is here for demo purposes instead of taking you to the actual JustGiving website to make a real donation</h2>
+
+@using (Html.BeginForm("FakeSdi", "Sdi", FormMethod.Post))
+{
+    <input type="hidden" name="exitUrl" value="@Model.ExitUrl"/>
+    <input type="hidden" name="reference" value="@Model.Reference"/>
+<p>You are donating <input type="text" name="amount" value="@Model.Amount"/> <input type="text" name="currency" value="@Model.Currency"/> to charity #<input type="text" name="charityid" value="@Model.CharityId"/>
+</p>
+<input type="submit" value="Click here to fake the donation"/>
+
+    Html.EndForm();
+}
+

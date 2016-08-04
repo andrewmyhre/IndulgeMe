@@ -60,10 +60,23 @@ namespace BlessTheWeb.MVC5
             );
 
             routes.MapRoute(
+                name: "SinsList",
+                url: "sins/list/{page}",
+                defaults: new { controller = "Sins", action = "Index", page = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
                 name: "SdiReturn",
                 url: "sdi/return/{guid}",
                 defaults: new { controller = "Sdi", action = "Return" }
             );
+
+            routes.MapRoute(
+                name: "FakeSdi",
+                url: "sdi/fake",
+                defaults: new { controller = "Sdi", action = "FakeSdi" }
+            );
+
 
             routes.MapRoute(
                 name: "Default",

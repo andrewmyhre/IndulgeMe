@@ -16,12 +16,10 @@ namespace BlessTheWeb.MVC5.Controllers
     public class HomeController : Controller
     {
         private readonly IIndulgeMeService _indulgeMeService;
-        private readonly IDatabase _db;
 
-        public HomeController(IIndulgeMeService indulgeMeService, IDatabase db)
+        public HomeController(IIndulgeMeService indulgeMeService)
         {
             _indulgeMeService = indulgeMeService;
-            _db = db;
         }
 
         public ActionResult Index()
@@ -61,26 +59,21 @@ namespace BlessTheWeb.MVC5.Controllers
         {
             // store the confession as a sin
             Indulgence indulgence = null;
-            using (var session = _db.OpenSession())
-            {
-                var sin = new Sin() { Content = confession, Source = "JC", Guid=Guid.NewGuid() };
-                session.Store(sin);
-                indulgence = new Indulgence()
-                {
-                    Confession = confession.Truncate(150),
-                    DateConfessed = DateTime.Now,
-                    IsBlessed = false,
-                    IsConfession = true,
-                    SinGuid = sin.Guid,
-                    Tweeted = false,
-                    Name = "Anonymous",
-                    Guid=Guid.NewGuid(),
-                    BackgroundImageName = "parchment3"
-                };
+            var sin = new Sin() { Content = confession, Source = "JC", Guid=Guid.NewGuid() };
                 
-                session.Store(indulgence);
-                session.SaveChanges();
-            }
+            indulgence = new Indulgence()
+            {
+                Confession = confession.Truncate(150),
+                DateConfessed = DateTime.Now,
+                IsBlessed = false,
+                IsConfession = true,
+                Sin = sin,
+                Tweeted = false,
+                Name = "Anonymous",
+                Guid=Guid.NewGuid(),
+                BackgroundImageName = "parchment3"
+            };
+            _indulgeMeService.SaveIndulgence(indulgence);
 
             return RedirectToAction("Confess", new { guid = indulgence.Guid });
         }
@@ -90,7 +83,7 @@ namespace BlessTheWeb.MVC5.Controllers
             if (string.IsNullOrWhiteSpace(guid))
                 return RedirectToAction("Index");
 
-            var indulgence = _db.GetIndulgenceByGuid(guid);
+            var indulgence = _indulgeMeService.GetIndulgenceByGuid(guid);
             ViewData["cid"] = guid;
 
             return View(indulgence);
@@ -101,16 +94,7 @@ namespace BlessTheWeb.MVC5.Controllers
         {
             if (string.IsNullOrWhiteSpace(guid) || !charityId.HasValue) return RedirectToAction("Index");
 
-            using (var session = _db.OpenSession())
-            {
-                var indulgence = _db.GetIndulgenceByGuid(guid);
-                indulgence.CharityId = charityId.Value;
-                indulgence.CharityName = charityName.Truncate(80);
-                if (!string.IsNullOrWhiteSpace(name)) indulgence.Name = name.Truncate(60);
-                if (!string.IsNullOrWhiteSpace(email)) indulgence.DonorEmailAddress = email.Truncate(200);
-                session.Store(indulgence);
-                session.SaveChanges();
-            }
+            _indulgeMeService.SetCharityDetails(guid, charityId.Value, charityName, name, email);
             return EnterSimpleDonationProcess(guid, charityId.Value);
         }
 
@@ -126,38 +110,11 @@ namespace BlessTheWeb.MVC5.Controllers
 
         public ActionResult Absolve(string guid)
         {
-            var sin = _db.GetSinByGuid(guid);
 
-            using (var session = _db.OpenSession())
-            {
-                var con = new Indulgence()
-                {
-                    Confession = sin.Content.Truncate(250),
-                    DateConfessed = DateTime.Now,
-                    IsBlessed = false,
-                    IsConfession = false,
-                    SinGuid = sin.Guid
-                };
-                session.Store(con);
-                session.SaveChanges();
-                ViewData["cid"] = con.Id;
-                return View("Absolve", con);
-            }
-            
+            var indulgence = _indulgeMeService.CreateIndulgenceForSin(guid);
+            ViewData["cid"] = indulgence.Guid;
+            return View("Absolve", indulgence);
         }
-
-        public ActionResult Bless(string id)
-        {
-            using (var session = _db.OpenSession())
-            {
-                var indulgence = _db.GetIndulgence(id);
-                indulgence.IsBlessed = true;
-                session.Store(indulgence);
-                session.SaveChanges();
-            }
-            return RedirectToAction("Index");
-        }
-
 
         public ActionResult Absolved(string id)
         {

@@ -18,35 +18,41 @@
     <input type="hidden" id="cid" value="@ViewData["cid"]" />
     <div id="charitysearch">
         <p id="p"><img src="/Content/ajax-loader.gif" /></p>
-        <ul id="charities"></ul>
+        <div class="container-fluid">
+            <div class="container">
+                <div class="row" id="charities">
+                </div>
+            </div>
+        </div>
 
-        <form id="search" action="#" onsubmit="return findCharities($('#query').val());">
-            <p>or find a charity:<input type="text" name="query" id="query" /> <input type="button" id="find" value="Search" class="button" /></p>
-        </form>
-    </div>
+                    <form id="search" action="#" onsubmit="return findCharities($('#query').val());">
+                        <p>or find a charity:<input type="text" name="query" id="query"/> <input type="button" id="find" value="Search" class="button"/>
+                        </p>
+                    </form>
+                </div>
 
-    <div id="id" class="hidden">
-        <h2>Make yourself known?</h2>
-        @using (Html.BeginForm("EnterDonationProcess", "Home"))
-        {
-            <input type="hidden" id="guid" name="guid" value="@ViewData["cid"]"/>
-            <input type="hidden" id="charityid" name="charityid"/>
-            <input type="hidden" id="charityname" name="charityname"/>
+                <div id="id" class="hidden">
+                    <h2>Make yourself known?</h2>
+                    @using (Html.BeginForm("EnterDonationProcess", "Home"))
+                    {
+                        <input type="hidden" id="guid" name="guid" value="@ViewData["cid"]" />
+                        <input type="hidden" id="charityid" name="charityid" />
+                        <input type="hidden" id="charityname" name="charityname" />
 
-            <p>You can remain anonymous if you wish, but can you truly repent if you hide your identity?</p>
-            <label for="name">Your name (optional):</label>
-            <input type="text" id="name" name="name"/>
+                        <p>You can remain anonymous if you wish, but can you truly repent if you hide your identity?</p>
+                        <label for="name">Your name (optional):</label>
+                        <input type="text" id="name" name="name" />
 
-            <p>If you would like a copy of your indulgence in PDF format provide your email address here. We won't share it with anyone.</p>
-            <label for="email">Email (optional):</label>
-            <input type="text" id="email" name="email"/>
+                        <p>If you would like a copy of your indulgence in PDF format provide your email address here. We won't share it with anyone.</p>
+                        <label for="email">Email (optional):</label>
+                        <input type="text" id="email" name="email" />
 
-            <p>After you click the 'Redeem' button you will be redirected to the JustGiving website where you can make your donation. Once your donation is processed you'll be returned to this site.</p>
-            <p><input type="submit" id="doredeem" value="Redeem yourself!" disabled="disabled"/><br/>
-                <a href="/sdi/return/@ViewData["cid"]?donationid=1">Pretend the donation has been made</a>
-            </p>
-            Html.EndForm();
-        }
-    </div>
-</div>
+                        <p>After you click the 'Redeem' button you will be redirected to the JustGiving website where you can make your donation. Once your donation is processed you'll be returned to this site.</p>
+                        <p>
+                            <input type="submit" id="doredeem" value="Redeem yourself!" disabled="disabled" /><br />
+                        </p>
+                        Html.EndForm();
+                    }
+                </div>
+            </div>
 

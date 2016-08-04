@@ -22,7 +22,7 @@ namespace BlessTheWeb.Tests.Integration
         {
             return new Indulgence()
                        {
-                           Id = "indulgences/1",
+                           Id = 1,
                            Name = "andrew",
                            CharityName = "test charity",
                            DateConfessed = DateTime.Now,
