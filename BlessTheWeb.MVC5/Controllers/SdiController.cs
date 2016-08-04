@@ -8,67 +8,81 @@ using JustGiving.Api.Sdk;
 using BlessTheWeb.Core.Repository;
 using BlessTheWeb.Core;
 using JustGiving.Api.Sdk.Model.Donation;
+using log4net;
 
 namespace BlessTheWeb.MVC5.Controllers
 {
     public class SdiController : Controller
     {
         private readonly IIndulgeMeService _indulgeMeService;
+        private readonly ILog _log;
 
-        public SdiController(IIndulgeMeService indulgeMeService)
+        public SdiController(IIndulgeMeService indulgeMeService, ILog log)
         {
             _indulgeMeService = indulgeMeService;
+            _log = log;
         }
 
         // GET: Sdi
         public ActionResult Return(string guid, int? donationId)
         {
-            if (!donationId.HasValue)
-                return RedirectToAction("Index", "Home");
-
-            var config = new ClientConfiguration(
-                ConfigurationManager.AppSettings["JgApiBaseUrl"],
-                ConfigurationManager.AppSettings["JGApiKey"],
-                1);
-
-            var client = new JustGivingClient(config);
-
-            DonationStatus donationStatus = null;
             try
             {
-                donationStatus = client.Donation.RetrieveStatus(donationId.Value);
-            }
-            catch
-            {
+                if (!donationId.HasValue)
+                    return RedirectToAction("Index", "Home");
 
-            }
+                var config = new ClientConfiguration(
+                    ConfigurationManager.AppSettings["JgApiBaseUrl"],
+                    ConfigurationManager.AppSettings["JGApiKey"],
+                    1);
 
-            if ((donationStatus != null && donationStatus.Status == "Accepted")
-                || ConfigurationManager.AppSettings["SkipDonationReferenceCheck"] == "true")
-            {
-                if (donationStatus != null)
+                var client = new JustGivingClient(config);
+
+                DonationStatus donationStatus = null;
+                try
                 {
-                    _indulgeMeService.Absolve(guid, donationStatus.DonationId, donationStatus.DonationRef, donationStatus.Amount,
-                        donationStatus.Reference);
-                } else if (ConfigurationManager.AppSettings["SkipDonationReferenceCheck"] == "true")
+                    donationStatus = client.Donation.RetrieveStatus(donationId.Value);
+                }
+                catch
                 {
-                    _indulgeMeService.Absolve(guid, 1, "1", 10, "not-a-real-donation");
+
                 }
 
-                var indulgence = _indulgeMeService.GetIndulgenceByGuid(guid);
-                _indulgeMeService.GenerateIndulgence(indulgence, 
-                    System.IO.Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "fonts"),
-                    System.IO.Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "Content"));
+                if ((donationStatus != null && donationStatus.Status == "Accepted")
+                    || ConfigurationManager.AppSettings["SkipDonationReferenceCheck"] == "true")
+                {
+                    if (donationStatus != null)
+                    {
+                        _indulgeMeService.Absolve(guid, donationStatus.DonationId, donationStatus.DonationRef,
+                            donationStatus.Amount,
+                            donationStatus.Reference);
+                    }
+                    else if (ConfigurationManager.AppSettings["SkipDonationReferenceCheck"] == "true")
+                    {
+                        _indulgeMeService.Absolve(guid, 1, "1", 10, "not-a-real-donation");
+                    }
 
-                TempData["absolutionId"] = guid;
+                    var indulgence = _indulgeMeService.GetIndulgenceByGuid(guid);
+                    _indulgeMeService.GenerateIndulgence(indulgence,
+                        System.IO.Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "fonts"),
+                        System.IO.Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "Content"));
 
-                ControllerContext.RequestContext.HttpContext.Cache.Remove("siteInfo");
-                ControllerContext.RequestContext.HttpContext.Response.RemoveOutputCacheItem(Url.Action("GetLatest", "Api"));
+                    TempData["absolutionId"] = guid;
 
-                return RedirectToAction("Index", "Indulgence", new { guid=guid });
+                    ControllerContext.RequestContext.HttpContext.Cache.Remove("siteInfo");
+                    ControllerContext.RequestContext.HttpContext.Response.RemoveOutputCacheItem(Url.Action("GetLatest",
+                        "Api"));
+
+                    return RedirectToAction("Index", "Indulgence", new {guid = guid});
+                }
+
+                return HttpNotFound();
             }
-
-            return HttpNotFound();
+            catch (Exception ex)
+            {
+                _log.Error("unhandled error returning from SDI", ex);
+                return new EmptyResult();
+            }
         }
 
         [HttpGet]
