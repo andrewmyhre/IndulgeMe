@@ -34,7 +34,7 @@ namespace BlessTheWeb.Data.NHibernate
 
         public static void RebuildDatabase()
         {
-            _sessionFactory.Dispose();
+            if (_sessionFactory != null) { _sessionFactory.Dispose();}
             _sessionFactory = Fluently
                 .Configure()
                 .Database(FluentNHibernate.Cfg.Db.MsSqlConfiguration.MsSql2012
