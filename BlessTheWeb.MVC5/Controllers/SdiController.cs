@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using JustGiving.Api.Sdk;
@@ -81,7 +82,12 @@ namespace BlessTheWeb.MVC5.Controllers
             catch (Exception ex)
             {
                 _log.Error("unhandled error returning from SDI", ex);
-                return new EmptyResult();
+                return new ContentResult()
+                {
+                    Content = ex.Message + "\r\n" + ex.StackTrace,
+                    ContentEncoding = Encoding.UTF8,
+                    ContentType = "text/plain"
+                };
             }
         }
 
