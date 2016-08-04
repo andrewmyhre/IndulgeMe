@@ -293,6 +293,8 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\TrajanPro-Regular.otf" />
     <Content Include="Content\UECHIGOT.TTF" />
+    <Content Include="fonts\TrajanPro-Regular.otf" />
+    <Content Include="fonts\UECHIGOT.TTF" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\confess.js" />
     <Content Include="Scripts\home.js" />
