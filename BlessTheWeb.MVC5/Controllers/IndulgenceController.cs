@@ -81,6 +81,14 @@ namespace BlessTheWeb.MVC5.Controllers
             return new FileContentResult(_indulgeMeService.GetIndulgenceImage(indulgence, size), "img/png");
         }
 
+        public ActionResult Pdf(string guid)
+        {
+            var indulgence = _indulgeMeService.GetIndulgenceByGuid(guid);
+            if (indulgence == null)
+                return HttpNotFound();
+            return new FileContentResult(_indulgeMeService.GetIndulgencePdf(indulgence), "application/pdf");
+        }
+
         public ActionResult GenerateAll()
         {
             StringBuilder sb = new StringBuilder();

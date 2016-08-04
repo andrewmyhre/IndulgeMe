@@ -83,7 +83,12 @@ namespace BlessTheWeb.Core
                 phrases.Add(new Phrase(" in the year of our Lord ", trajanProAttribution));
                 phrases.Add(new Phrase(indulgence.DateConfessed.Year.ToString(), trajanProBoldSmall));
                 phrases.Add(new Phrase(", ", trajanProAttribution));
-                phrases.Add(new Phrase(indulgence.Name, trajanProBoldSmall));
+                var attributionName = indulgence.Name;
+                if (string.IsNullOrWhiteSpace(attributionName))
+                {
+                    attributionName = "An Anonymous Believer";
+                }
+                phrases.Add(new Phrase(attributionName, trajanProBoldSmall));
                 phrases.Add(new Phrase(" selflessly gave the sum of ", trajanProAttribution));
                 phrases.Add(new Phrase(string.Format("{0:c}", indulgence.AmountDonated), trajanProBoldSmall));
                 phrases.Add(new Phrase(" to the deserving organisation ", trajanProAttribution));
@@ -154,7 +159,8 @@ namespace BlessTheWeb.Core
             public ParchmentPageEventHelper(IFileStorage fileStorage, string contentDirectory, string bkFilename)
             {
                 _contentDirectory = contentDirectory;
-                parchment = iTextSharp.text.Image.GetInstance(fileStorage.Get(string.Format("Content\\{0}.jpg",bkFilename)));
+                parchment = iTextSharp.text.Image.GetInstance(fileStorage.Get(string.Format("{0}{1}.jpg",
+                    ConfigurationManager.AppSettings["AssetsRelativePath"],bkFilename)));
             }
 
             public override void OnEndPage(PdfWriter writer, Document document)

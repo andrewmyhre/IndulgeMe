@@ -15,6 +15,7 @@ namespace BlessTheWeb.MVC5.App_Start
     using Core;
     using Core.Repository;
     using NHibernate;
+    using Storage.AzureCdn;
     public static class NinjectWebCommon 
     {
         private static readonly Bootstrapper bootstrapper = new Bootstrapper();
@@ -65,7 +66,7 @@ namespace BlessTheWeb.MVC5.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            kernel.Bind<IFileStorage>().To<FileSystemStorage>();
+            kernel.Bind<IFileStorage>().To<AzureFileStorage>();
             kernel.Bind<IIndulgenceGenerator>().To<IndulgenceGeneratoriTextSharp>();
             kernel.Bind<ISession>().ToMethod(x =>SessionFactory.Instance.OpenSession()).InRequestScope();
             kernel.Bind<IIndulgeMeService>().To<NHibernateIndulgeMeService>();

@@ -236,6 +236,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CharitiesController.cs" />
+    <Compile Include="Controllers\ConfigController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IndulgenceApiController.cs" />
     <Compile Include="Controllers\IndulgenceController.cs" />
@@ -350,7 +351,7 @@
     <Content Include="Views\Indulgence\ShareThis.cshtml" />
     <Content Include="Views\Indulgence\List.cshtml" />
     <Content Include="Views\Sins\Index.cshtml" />
-    <Content Include="Views\Sdi\FakeSdiView.cshtml" />
+    <Content Include="Views\Sdi\FakeSdi.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -371,6 +372,10 @@
     <ProjectReference Include="..\BlessTheWeb.Data.NHibernate\BlessTheWeb.Data.NHibernate.csproj">
       <Project>{949df85b-dbc5-4678-9853-bec88d65c0f4}</Project>
       <Name>BlessTheWeb.Data.NHibernate</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BlessTheWeb.Storage.AzureCdn\BlessTheWeb.Storage.AzureCdn.csproj">
+      <Project>{4a825f0e-0a35-4592-8f47-7a13aea04548}</Project>
+      <Name>BlessTheWeb.Storage.AzureCdn</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
