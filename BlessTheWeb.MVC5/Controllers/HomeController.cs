@@ -105,7 +105,9 @@ namespace BlessTheWeb.MVC5.Controllers
                 string.Format(ConfigurationManager.AppSettings["JGSDIUrlFormat"],
                 charityId, 
                 Url.Encode(returnUrl), 
-                guid));
+                guid,
+                ConfigurationManager.AppSettings["DefaultDonationCurrency"],
+                HttpUtility.UrlEncode(ConfigurationManager.AppSettings["DefaultDonationMessage"])));
         }
 
         public ActionResult Absolve(string guid)

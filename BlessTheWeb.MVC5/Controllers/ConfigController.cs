@@ -7,6 +7,8 @@ using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Web.Http;
+using BlessTheWeb.Data.NHibernate;
+using NHibernate.Tool.hbm2ddl;
 
 namespace BlessTheWeb.MVC5.Controllers
 {
@@ -48,6 +50,13 @@ namespace BlessTheWeb.MVC5.Controllers
                 sb.AppendLine(string.Format("Stored {0}", asset));
             }
             return sb.ToString();
+        }
+
+        [HttpGet]
+        public string RebuildDatabase()
+        {
+            SessionFactory.RebuildDatabase();
+            return "Done.";
         }
     }
 }

@@ -13,3 +13,4 @@ TweetOutbox
 /BlessTheWeb/Content/indulgences/
 packages/
 .vs
+*.orig
