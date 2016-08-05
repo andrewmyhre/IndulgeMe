@@ -25,7 +25,7 @@
                     }
                 });
 
-                $('#blessing').delay(25000).fadeOut();
+                //$('#blessing').delay(25000).fadeOut();
             }
         }
     });

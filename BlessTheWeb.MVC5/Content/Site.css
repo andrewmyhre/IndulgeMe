@@ -27,6 +27,7 @@ h1.masthead a:hover {
         font-family: 'TrajanProRegular';
         font-size: 30pt;
     }
+
     h2 {
         font-size: 16pt;
     }
@@ -38,6 +39,7 @@ h1.masthead a:hover {
         margin: auto;
         text-align: center;
     }
+
     #confess input, #confess button {
         margin: 0;
         font-size: 14pt;
@@ -47,21 +49,48 @@ h1.masthead a:hover {
         vertical-align: middle;
         padding: 0.3em;
     }
+
     #nav li {
         display: inline;
         text-indent: 0;
         padding: 0;
     }
 
-    #nav li a {
-        min-width: 32%;
-        display: inline-block;
-    }
+        #nav li a {
+            min-width: 32%;
+            display: inline-block;
+        }
+
     #indulgence-image {
         width: 80%;
     }
+
     input {
         width: 80px;
+    }
+
+    #god_blessing {
+        background-image: url('/content/god_head_sm.png');
+        width: 700px;
+        height: 315px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 100;
+        top: -160px;
+        left: 50%;
+        margin-top: -160px; /* negative half the size of height */
+        margin-left: -355px; /* negative half the size of width */
+    }
+
+    .cloud {
+        position: fixed;
+        z-index: 101;
+        top: 100px;
+        left: 300px;
+        margin-top: -100px;
+        margin-left: -100px;
+        width: 150px;
     }
 }
 @media(min-width:768px) {
@@ -117,6 +146,29 @@ h1.masthead a:hover {
         #select-charity .charity-card a p, #select-charity .charity-card a small em {
             text-align: left;
         }
+        #god_blessing {
+        background-image: url('/content/god_head_sm.png');
+        width: 700px;
+        height: 315px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 100;
+        top: -160px;
+        left: 50%;
+        margin-top: -160px; /* negative half the size of height */
+        margin-left: -355px; /* negative half the size of width */
+    }
+
+    .cloud {
+        position: fixed;
+        z-index: 101;
+        top: 100px;
+        left: 300px;
+        margin-top: -100px;
+        margin-left: -100px;
+        width: 150px;
+    }
 }
 @media(min-width:992px){}
 @media(min-width:1200px) {
@@ -174,6 +226,30 @@ h1.masthead a:hover {
         #select-charity .charity-card a p, #select-charity .charity-card a small em {
             text-align: left !important;
         }
+
+        #god_blessing {
+    background-image: url('/content/god_head.png');
+    max-width: 1600px;
+    width: 80%;
+    height: 720px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    top:-360px;
+    left:50%;
+    margin-top:-360px; /* negative half the size of height */
+    margin-left:-800px; /* negative half the size of width */
+}
+
+.cloud {
+    position: fixed;
+    z-index: 101;
+    top: 100px;
+    left: 300px;
+    margin-top: -100px;
+    margin-left: -100px;
+}
 }
 
 /* everything */
@@ -364,29 +440,4 @@ padding:0.3em;
 {
     position:absolute; 
     bottom:0;
-}
-
-
-#god_blessing {
-    background-image: url('/content/god_head.png');
-    max-width: 1600px;
-    width: 80%;
-    height: 720px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 100;
-    top:-360px;
-    left:50%;
-    margin-top:-360px; /* negative half the size of height */
-    margin-left:-800px; /* negative half the size of width */
-}
-
-.cloud {
-    position: fixed;
-    z-index: 101;
-    top: 100px;
-    left: 300px;
-    margin-top: -100px;
-    margin-left: -100px;
 }

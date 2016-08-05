@@ -279,6 +279,7 @@
     <Content Include="Content\god.png" />
     <Content Include="Content\god_blessing.png" />
     <Content Include="Content\god_head.png" />
+    <Content Include="Content\god_head_sm.png" />
     <Content Include="Content\header.png" />
     <Content Include="Content\home-parchment22.gif" />
     <Content Include="Content\im.css" />
