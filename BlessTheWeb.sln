@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlessTheWeb.Data.NHibernate
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlessTheWeb.Storage.AzureCdn", "BlessTheWeb.Storage.AzureCdn\BlessTheWeb.Storage.AzureCdn.csproj", "{4A825F0E-0A35-4592-8F47-7A13AEA04548}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlessTheWeb.Email.SendGrid", "BlessTheWeb.Email.SendGrid\BlessTheWeb.Email.SendGrid.csproj", "{D2E5B188-43C9-48CC-9DAC-B0282BFECED4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -280,6 +282,30 @@ Global
 		{4A825F0E-0A35-4592-8F47-7A13AEA04548}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{4A825F0E-0A35-4592-8F47-7A13AEA04548}.Release|x86.ActiveCfg = Release|Any CPU
 		{4A825F0E-0A35-4592-8F47-7A13AEA04548}.Release|x86.Build.0 = Release|Any CPU
+		{D2E5B188-43C9-48CC-9DAC-B0282BFECED4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2E5B188-43C9-48CC-9DAC-B0282BFECED4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2E5B188-43C9-48CC-9DAC-B0282BFECED4}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{D2E5B188-43C9-48CC-9DAC-B0282BFECED4}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{D2E5B188-43C9-48CC-9DAC-B0282BFECED4}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D2E5B188-43C9-48CC-9DAC-B0282BFECED4}.Debug|x86.Build.0 = Debug|Any CPU
+		{D2E5B188-43C9-48CC-9DAC-B0282BFECED4}.EC2|Any CPU.ActiveCfg = Release|Any CPU
+		{D2E5B188-43C9-48CC-9DAC-B0282BFECED4}.EC2|Any CPU.Build.0 = Release|Any CPU
+		{D2E5B188-43C9-48CC-9DAC-B0282BFECED4}.EC2|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{D2E5B188-43C9-48CC-9DAC-B0282BFECED4}.EC2|Mixed Platforms.Build.0 = Release|Any CPU
+		{D2E5B188-43C9-48CC-9DAC-B0282BFECED4}.EC2|x86.ActiveCfg = Release|Any CPU
+		{D2E5B188-43C9-48CC-9DAC-B0282BFECED4}.EC2|x86.Build.0 = Release|Any CPU
+		{D2E5B188-43C9-48CC-9DAC-B0282BFECED4}.Mono|Any CPU.ActiveCfg = Release|Any CPU
+		{D2E5B188-43C9-48CC-9DAC-B0282BFECED4}.Mono|Any CPU.Build.0 = Release|Any CPU
+		{D2E5B188-43C9-48CC-9DAC-B0282BFECED4}.Mono|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{D2E5B188-43C9-48CC-9DAC-B0282BFECED4}.Mono|Mixed Platforms.Build.0 = Release|Any CPU
+		{D2E5B188-43C9-48CC-9DAC-B0282BFECED4}.Mono|x86.ActiveCfg = Release|Any CPU
+		{D2E5B188-43C9-48CC-9DAC-B0282BFECED4}.Mono|x86.Build.0 = Release|Any CPU
+		{D2E5B188-43C9-48CC-9DAC-B0282BFECED4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2E5B188-43C9-48CC-9DAC-B0282BFECED4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2E5B188-43C9-48CC-9DAC-B0282BFECED4}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{D2E5B188-43C9-48CC-9DAC-B0282BFECED4}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{D2E5B188-43C9-48CC-9DAC-B0282BFECED4}.Release|x86.ActiveCfg = Release|Any CPU
+		{D2E5B188-43C9-48CC-9DAC-B0282BFECED4}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

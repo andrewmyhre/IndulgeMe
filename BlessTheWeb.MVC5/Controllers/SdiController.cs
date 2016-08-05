@@ -10,22 +10,25 @@ using BlessTheWeb.Core.Repository;
 using BlessTheWeb.Core;
 using JustGiving.Api.Sdk.Model.Donation;
 using log4net;
+using System.Threading.Tasks;
 
 namespace BlessTheWeb.MVC5.Controllers
 {
-    public class SdiController : Controller
+    public class SdiController : AsyncController
     {
         private readonly IIndulgeMeService _indulgeMeService;
+        private readonly IIndulgenceEmailer _indulgenceEmailer;
         private readonly ILog _log;
 
-        public SdiController(IIndulgeMeService indulgeMeService, ILog log)
+        public SdiController(IIndulgeMeService indulgeMeService, IIndulgenceEmailer indulgenceEmailer, ILog log)
         {
             _indulgeMeService = indulgeMeService;
+            _indulgenceEmailer = indulgenceEmailer;
             _log = log;
         }
 
         // GET: Sdi
-        public ActionResult Return(string guid, int? donationId)
+        public async Task<ActionResult> Return(string guid, int? donationId)
         {
             try
             {
@@ -67,6 +70,8 @@ namespace BlessTheWeb.MVC5.Controllers
                     _indulgeMeService.GenerateIndulgence(indulgence,
                         System.IO.Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "fonts"),
                         System.IO.Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "Content"));
+
+                    await _indulgenceEmailer.Send(indulgence, ConfigurationManager.AppSettings["IndulgencePdfRelativePath"]);
 
                     TempData["absolutionId"] = guid;
 

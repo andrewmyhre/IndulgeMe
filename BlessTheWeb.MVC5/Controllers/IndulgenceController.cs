@@ -15,12 +15,14 @@ namespace BlessTheWeb.MVC5.Controllers
     public class IndulgenceController : Controller
     {
         private readonly IIndulgeMeService _indulgeMeService;
+        private readonly IIndulgenceEmailer _indulgenceEmailer;
         const int pageSize = 12;
         private string contentPath = HostingEnvironment.MapPath("~/content");
 
-        public IndulgenceController(IIndulgeMeService indulgeMeService)
+        public IndulgenceController(IIndulgeMeService indulgeMeService, IIndulgenceEmailer indulgenceEmailer)
         {
             _indulgeMeService = indulgeMeService;
+            _indulgenceEmailer = indulgenceEmailer;
         }
 
         //
@@ -56,6 +58,20 @@ namespace BlessTheWeb.MVC5.Controllers
                 absolutionViewModel.Indulgence);
 
             return View(absolutionViewModel);
+        }
+
+        public ActionResult Email(string guid)
+        {
+            var indulgence = _indulgeMeService.GetIndulgenceByGuid(guid);
+            _indulgenceEmailer.Send(indulgence, string.Format("{0}/indulgence/pdf/{1}",
+                ConfigurationManager.AppSettings["WebsiteHostName"], indulgence.Guid));
+
+            return new ContentResult()
+            {
+                Content = "sent",
+                ContentType = "text/plain",
+                ContentEncoding = Encoding.UTF8
+            };
         }
 
         public ActionResult GenerateImage(string guid)

@@ -386,6 +386,10 @@
       <Project>{949df85b-dbc5-4678-9853-bec88d65c0f4}</Project>
       <Name>BlessTheWeb.Data.NHibernate</Name>
     </ProjectReference>
+    <ProjectReference Include="..\BlessTheWeb.Email.SendGrid\BlessTheWeb.Email.SendGrid.csproj">
+      <Project>{d2e5b188-43c9-48cc-9dac-b0282bfeced4}</Project>
+      <Name>BlessTheWeb.Email.SendGrid</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BlessTheWeb.Storage.AzureCdn\BlessTheWeb.Storage.AzureCdn.csproj">
       <Project>{4a825f0e-0a35-4592-8f47-7a13aea04548}</Project>
       <Name>BlessTheWeb.Storage.AzureCdn</Name>

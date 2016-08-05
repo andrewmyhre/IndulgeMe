@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Configuration;
 using System.Net.Mail;
+using System.Threading.Tasks;
 using System.Web.Hosting;
 using System.Xml.Linq;
 
 namespace BlessTheWeb.Core
 {
-    [Obsolete("Use EmailProcessing", true)]
     public class GmailIndulgenceEmailer : IIndulgenceEmailer
     {
-        public void Send(Indulgence indulgence, string indulgenceFilePath)
+        public async Task Send(Indulgence indulgence, string indulgenceFilePath)
         {
             MailMessage message = new MailMessage();
             message.From = new MailAddress(ConfigurationManager.AppSettings["emailFromAddress"], "IndulgeMe.cc");

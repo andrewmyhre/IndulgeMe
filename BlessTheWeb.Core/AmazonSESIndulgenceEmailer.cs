@@ -4,14 +4,14 @@ using System.Web.Hosting;
 using System.Xml.Linq;
 using Amazon.SimpleEmail;
 using Amazon.SimpleEmail.Model;
+using System.Threading.Tasks;
 
 namespace BlessTheWeb.Core
 {
-    [Obsolete("Use EmailProcessing", true)]
     public class AmazonSesIndulgenceEmailer : IIndulgenceEmailer
     {
         private Amazon.SimpleEmail.AmazonSimpleEmailServiceClient service;
-        public void Send(Indulgence indulgence, string indulgenceFilePath)
+        public async Task Send(Indulgence indulgence, string indulgenceFilePath)
         {
             service =
                 new AmazonSimpleEmailServiceClient(

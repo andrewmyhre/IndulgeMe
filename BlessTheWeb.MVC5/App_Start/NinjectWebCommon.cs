@@ -1,4 +1,5 @@
 using BlessTheWeb.Data.NHibernate;
+using BlessTheWeb.Email.Azure;
 
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(BlessTheWeb.MVC5.App_Start.NinjectWebCommon), "Start")]
 [assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(BlessTheWeb.MVC5.App_Start.NinjectWebCommon), "Stop")]
@@ -17,6 +18,7 @@ namespace BlessTheWeb.MVC5.App_Start
     using NHibernate;
     using Storage.AzureCdn;
     using log4net;
+    using Email;
     public static class NinjectWebCommon 
     {
         private static readonly Bootstrapper bootstrapper = new Bootstrapper();
@@ -72,6 +74,7 @@ namespace BlessTheWeb.MVC5.App_Start
             kernel.Bind<IIndulgenceGenerator>().To<IndulgenceGeneratoriTextSharp>();
             kernel.Bind<ISession>().ToMethod(x =>SessionFactory.Instance.OpenSession()).InRequestScope();
             kernel.Bind<IIndulgeMeService>().To<NHibernateIndulgeMeService>();
+            kernel.Bind<IIndulgenceEmailer>().To<AzureIndulgenceEmailer>();
         }
     }
 }
