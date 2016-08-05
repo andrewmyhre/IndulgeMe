@@ -73,12 +73,13 @@ namespace BlessTheWeb.MVC5.Controllers
 
                     await _indulgenceEmailer.Send(indulgence, ConfigurationManager.AppSettings["IndulgencePdfRelativePath"]);
 
-                    TempData["absolutionId"] = guid;
+                    TempData["absolved"] = guid;
 
                     ControllerContext.RequestContext.HttpContext.Cache.Remove("siteInfo");
                     ControllerContext.RequestContext.HttpContext.Response.RemoveOutputCacheItem(Url.Action("GetLatest",
                         "Api"));
 
+                    ViewData["ShowBlessing"] = true;
                     return RedirectToAction("Index", "Indulgence", new {guid = guid});
                 }
 

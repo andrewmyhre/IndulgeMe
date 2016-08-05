@@ -1,16 +1,19 @@
 ﻿@model BlessTheWeb.MVC5.Models.IndulgencesViewModel
 
 @{
-    ViewBag.Title = "View";
+    ViewBag.Title = Model.Indulgence.Confession + " - A Plenary Indulgence";
     Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section scripts {
+    <script type="text/javascript" src="/Scripts/indulgence.js"></script>
 }
 <div id="indulgence-view">
     @if (ViewData["ShowBlessing"] != null && (bool)ViewData["ShowBlessing"] == true)
     {
-        <h2 class="congratulations">Congratulations! Consider yourself blessed.</h2>
-        
-
-    <script type="text/javascript">    $('.congratulations').delay(5000).slideUp();</script>
+        <div id="blessing">
+            <h2 class="congratulations">Congratulations! Consider yourself blessed.</h2>
+            <div id="god_blessing"></div>
+        </div>
     }
     @Html.RouteLink("Download a PDF version", "ViewIndulgencePdf", new {guid=Model.Indulgence.Guid})
     <div class="aa">

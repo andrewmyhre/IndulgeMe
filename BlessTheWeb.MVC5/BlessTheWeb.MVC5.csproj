@@ -260,12 +260,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\10277-m-001.mp3" />
+    <Content Include="Content\10277-m-001.wav" />
     <Content Include="Content\123.png" />
     <Content Include="Content\ajax-loader.gif" />
     <Content Include="Content\blank.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\CharitySearch.html" />
+    <Content Include="Content\cloud1.png" />
+    <Content Include="Content\cloud2.png" />
     <Content Include="Content\emailTemplates\Exception.xml" />
     <Content Include="Content\emailTemplates\IndulgenceCreated.xml" />
     <Content Include="Content\emailTemplates\indulgenceEmail.xml" />
@@ -273,6 +276,8 @@
     <Content Include="Content\fingers2.png" />
     <Content Include="Content\footer.png" />
     <Content Include="Content\god.png" />
+    <Content Include="Content\god_blessing.png" />
+    <Content Include="Content\god_head.png" />
     <Content Include="Content\header.png" />
     <Content Include="Content\home-parchment22.gif" />
     <Content Include="Content\im.css" />
@@ -309,6 +314,7 @@
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\confess.js" />
     <Content Include="Scripts\home.js" />
+    <Content Include="Scripts\indulgence.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -409,7 +415,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>49899</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

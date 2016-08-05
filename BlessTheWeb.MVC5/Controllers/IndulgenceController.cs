@@ -29,7 +29,7 @@ namespace BlessTheWeb.MVC5.Controllers
         // GET: /Indulgence/
         public ActionResult Index(string guid)
         {
-            if (TempData["absolutionId"] != null)
+            if (TempData["absolved"] != null || !string.IsNullOrWhiteSpace(Request.QueryString["congratulations"]))
             {
                 ViewData["ShowBlessing"] = true;
             }

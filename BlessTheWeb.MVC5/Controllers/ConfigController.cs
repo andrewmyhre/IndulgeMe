@@ -32,7 +32,11 @@ namespace BlessTheWeb.MVC5.Controllers
                 "YeOldeParchment4.png",
                 "marble1.jpg",
                 "paper.jpg",
-                "home-parchment22.gif"
+                "home-parchment22.gif",
+                "cloud1.png",
+                "cloud2.png",
+                "cloud3.png",
+                "10277-m-001.wav",
             };
 
             foreach (var asset in assets)
