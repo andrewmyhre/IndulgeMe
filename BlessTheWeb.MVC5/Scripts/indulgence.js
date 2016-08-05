@@ -1,7 +1,7 @@
 ﻿$(document)
     .ready(function() {
         if ($('.congratulations').length > 0) {
-            $('.congratulations').append('<audio id="hallelujah" src="/Content/10277-m-001.wav" preload></audio>');
+            $('.congratulations').append('<audio id="hallelujah" preload autoplay><source src="/Content/10277-m-001.mp3" type="audio/mp3"><source src="/Content/10277-m-001.wav" type="audio/wav"></audio>');
             document.getElementById('hallelujah').play();
             $('#god_blessing').animate({ top: "20%" }, 25000);
 
