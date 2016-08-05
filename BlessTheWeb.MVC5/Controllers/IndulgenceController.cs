@@ -1,6 +1,7 @@
 ﻿using BlessTheWeb.Core;
 using BlessTheWeb.Core.Repository;
 using BlessTheWeb.MVC5.Models;
+using log4net;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -16,13 +17,15 @@ namespace BlessTheWeb.MVC5.Controllers
     {
         private readonly IIndulgeMeService _indulgeMeService;
         private readonly IIndulgenceEmailer _indulgenceEmailer;
+        private readonly ILog _log;
         const int pageSize = 12;
         private string contentPath = HostingEnvironment.MapPath("~/content");
 
-        public IndulgenceController(IIndulgeMeService indulgeMeService, IIndulgenceEmailer indulgenceEmailer)
+        public IndulgenceController(IIndulgeMeService indulgeMeService, IIndulgenceEmailer indulgenceEmailer, ILog log)
         {
             _indulgeMeService = indulgeMeService;
             _indulgenceEmailer = indulgenceEmailer;
+            _log = log;
         }
 
         //
@@ -63,8 +66,17 @@ namespace BlessTheWeb.MVC5.Controllers
         public ActionResult Email(string guid)
         {
             var indulgence = _indulgeMeService.GetIndulgenceByGuid(guid);
-            _indulgenceEmailer.Send(indulgence, string.Format("{0}/indulgence/pdf/{1}",
-                ConfigurationManager.AppSettings["WebsiteHostName"], indulgence.Guid));
+
+            try
+            {
+                _indulgenceEmailer.Send(indulgence, string.Format("{0}/indulgence/pdf/{1}",
+                    ConfigurationManager.AppSettings["WebsiteHostName"], indulgence.Guid));
+            }
+            catch (Exception ex)
+            {
+                _log.Error("Failed to send email", ex);
+                throw;
+            }
 
             return new ContentResult()
             {
