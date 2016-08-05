@@ -7,13 +7,19 @@
 
 <div id="indulgence-wall">
     <h2>All Indulgences</h2>
-    @foreach(var indulgence in Model.Indulgences)
-    {
-    <div class="indulgence">
-        <a href="/indulgence/@indulgence.Guid"><img src="/indulgence/image/@indulgence.Guid/3" /></a>
-        <p><a href="/indulgence/@indulgence.Guid">@(string.IsNullOrWhiteSpace(indulgence.Name)?"Anonymous": indulgence.Name), @indulgence.DateConfessed.ToString("hh:mm dd/MM/yyyy")</a></p>
-    </div>    
-    }
+    <div class="container-fluid">
+        <div class="row">
+            @foreach (var indulgence in Model.Indulgences)
+            {
+                <div class="indulgence col-xs-12 col-sm-6 col-md-4">
+                    <a href="/indulgence/@indulgence.Guid"><img src="/indulgence/image/@indulgence.Guid/3" /></a>
+                    <p>
+                        <a href="/indulgence/@indulgence.Guid">@(string.IsNullOrWhiteSpace(indulgence.Name) ? "Anonymous" : indulgence.Name), @indulgence.DateConfessed.ToString("hh:mm dd/MM/yyyy")</a>
+                    </p>
+                </div>
+            }
+        </div>
+    </div>
     <div class="clearfix"></div>
     @if (Model.ShowPreviousPageLink) {
         @Html.ActionLink("Previous Page", "List", "Indulgence", new {page=Model.PreviousPage}, null) 

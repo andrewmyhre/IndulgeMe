@@ -30,7 +30,8 @@ namespace BlessTheWeb.MVC5.Controllers
                     Confession = i.Confession,
                     Date = i.DateConfessed.ToString("dd/MM/yyyy hh:mm"),
                     Id = i.Id.ToString(),
-                    ThumbnailUrl=this.Url.Link("ViewIndulgenceImage", new { guid=i.Guid, size=3})
+                    ThumbnailUrl=this.Url.Link("ViewIndulgenceImage", new { guid=i.Guid, size=3}),
+                    Guid=i.Guid
                 });
 
             return vm.ToArray();

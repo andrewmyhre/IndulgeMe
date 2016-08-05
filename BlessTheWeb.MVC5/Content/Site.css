@@ -9,19 +9,148 @@
     font-style: normal;
 }
 
-body {
-    height: 100%;
-  margin: 0;
-  padding: 0;
-    background:#EFDDAF;
-    background-image:url('/content/paper.jpg');
+h1.masthead a:hover {
+    text-decoration: none;
 }
 
-body, p, a, div, td, input, button
-{
-    font-family:Georgia, verdana;
-    font-size:12pt;
-    color:#7F0000;
+@media(max-width:767px) {
+    /* iphone 6 */
+    body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        background: #EFDDAF;
+        background-image: url('/content/paper.jpg');
+    }
+
+    h1.masthead, h1.masthead a {
+        font-family: 'TrajanProRegular';
+        font-size: 30pt;
+    }
+
+    .page {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        margin: auto;
+        text-align: center;
+    }
+    #confess input, #confess button {
+        margin: 0;
+        font-size: 14pt;
+        background-color: #F0FFFF;
+        border-radius: 0.5em;
+        -moz-border-radius: 0.5em;
+        vertical-align: middle;
+        padding: 0.3em;
+    }
+    #nav li {
+        display: inline;
+        text-indent: 0;
+        padding: 0;
+    }
+
+    #nav li a {
+        min-width: 32%;
+        display: inline-block;
+    }
+}
+@media(min-width:768px) {
+    /* tablets */
+    body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        background: #EFDDAF;
+        background-image: url('/content/paper.jpg');
+    }
+
+    h1.masthead, h1.masthead a {
+        font-family: 'TrajanProRegular';
+        font-size: 50pt;
+    }
+
+    .page {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        margin: auto;
+        text-align: center;
+    }
+
+    #confess input, #confess button {
+        margin: 0;
+        font-size: 14pt;
+        background-color: #F0FFFF;
+        border-radius: 0.5em;
+        -moz-border-radius: 0.5em;
+        vertical-align: middle;
+        padding: 0.3em;
+    }
+
+    #nav li {
+        display: inline;
+        text-indent: 0;
+        padding: 0;
+    }
+
+    #nav li a {
+        min-width: 32%;
+        display: inline-block;
+    }
+}
+@media(min-width:992px){}
+@media(min-width:1200px) {
+    /* desktop */
+    body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        background: #EFDDAF;
+        background-image: url('/content/paper.jpg');
+    }
+
+    h1.masthead, h1.masthead a {
+        font-family: 'TrajanProRegular';
+        font-size: 60pt;
+    }
+
+    .page {
+        position: relative;
+        z-index: 1;
+        width: 1024px;
+        margin: auto;
+        text-align: center;
+    }
+
+    #confess input, #confess button {
+        margin: 0;
+        font-size: 28pt;
+        background-color: #F0FFFF;
+        border-radius: 0.5em;
+        -moz-border-radius: 0.5em;
+        vertical-align: middle;
+    }
+
+    #nav li {
+        display: inline;
+        text-indent: 0;
+        margin: 2em;
+        padding: 0;
+    }
+
+    #nav li a {
+        min-width: 200px;
+        display: inline-block;
+    }
+}
+
+/* everything */
+
+body, p, a, div, td, input, button {
+    font-family: Georgia, verdana;
+    font-size: 12pt;
+    color: #7F0000;
 }
 
 a { color:#AF0000;}
@@ -33,24 +162,6 @@ img#bg {
   left:0;
   width:100%;
   height:100%;
-}
-
-.page {
-  position:relative;
-  z-index:1;
-  width:1024px;
-  margin:auto;
-  text-align:center;
-}
-
-h1.masthead, h1.masthead a
-{
-    font-family: 'TrajanProRegular';
-    font-size: 60pt;
-    
-}
-h1.masthead a:hover {
-    text-decoration: none;
 }
 
 .panel {
@@ -77,19 +188,7 @@ p.tl
     padding:0;
 }
 
-#nav li
-{
-    display:inline;
-    text-indent:0;
-    margin:2em;
-    padding:0;
-    min-width: 200px;
-}
 
-#nav li a {
-    width: 200px;
-    display: inline-block;
-}
 
 #confess
 {
@@ -151,15 +250,7 @@ margin-right:15px;
 #recently ul li
 {
 }
-#confess input, #confess button
-{
-    margin: 0;
-    font-size:28pt;
-    background-color:#F0FFFF;
-    border-radius:0.5em;
-    -moz-border-radius:0.5em;
-    vertical-align: middle;
-}
+
 #choose-style img {
 
 }
@@ -182,12 +273,6 @@ margin-right:15px;
 {
     margin:0;
     bottom:0.3em;
-}
-
-div.indulgence
-{
-    float:left;
-    width:33%;
 }
 
 div.indulgence a, div.indulgence img
@@ -242,3 +327,5 @@ padding:0.3em;
     position:absolute; 
     bottom:0;
 }
+
+

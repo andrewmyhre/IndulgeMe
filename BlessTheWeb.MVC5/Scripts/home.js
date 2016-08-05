@@ -2,9 +2,9 @@
     $.getJSON('/api/indulgenceapi/getlatest',
     function (data) {
         for (var i = 0; i < data.length; i++) {
-            $('#indulgence-wall > #indulgences')
-                .append('<div class="indulgence">'+
-                    '<a href="/indulgence/' + data[i].Guid + '"><img src="' + data[i].ThumbnailUrl + '" /></a>' +
+            $('#indulgences')
+                .append(
+                    '<div class="col-xs-12 col-sm-6 col-md-4"><a href="/indulgence/' + data[i].Guid + '"><img src="' + data[i].ThumbnailUrl + '" /></a>' +
                     '<p><a href="/indulgence/' + data[i].Guid + '">' + data[i].Date + '</a></p>' +
                     '</div>');
             }
