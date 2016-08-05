@@ -90,11 +90,15 @@ namespace BlessTheWeb.MVC5.Controllers
         }
 
         [HttpPost]
-        public ActionResult EnterDonationProcess(string guid, int? charityId, string charityName, string name, string email)
+        public ActionResult EnterDonationProcess(string guid, int? charityId, string charityName, string name, string email, string style)
         {
             if (string.IsNullOrWhiteSpace(guid) || !charityId.HasValue) return RedirectToAction("Index");
+            if (string.IsNullOrWhiteSpace(email))
+            {
+                return RedirectToAction("Confess", "Home", new {guid = guid, charityid=charityId, charityName=charityName, needemail=true});
+            }
 
-            _indulgeMeService.SetCharityDetails(guid, charityId.Value, charityName, name, email);
+            _indulgeMeService.SetCharityDetails(guid, charityId.Value, charityName, name, email, style);
             return EnterSimpleDonationProcess(guid, charityId.Value);
         }
 

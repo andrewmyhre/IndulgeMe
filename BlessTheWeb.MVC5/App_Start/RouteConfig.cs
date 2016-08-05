@@ -54,6 +54,11 @@ namespace BlessTheWeb.MVC5
                 defaults: new { controller = "Indulgence", action = "Image" }
             );
             routes.MapRoute(
+                name: "ViewIndulgencePdf",
+                url: "indulgence/pdf/{guid}",
+                defaults: new { controller = "Indulgence", action = "Pdf" }
+            );
+            routes.MapRoute(
                 name: "ListIndulgences",
                 url: "indulgences/list/{page}",
                 defaults: new { controller = "Indulgence", action = "List", page = UrlParameter.Optional }

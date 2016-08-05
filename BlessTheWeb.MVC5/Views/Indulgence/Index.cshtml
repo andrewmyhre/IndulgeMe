@@ -8,11 +8,11 @@
     @if (ViewData["ShowBlessing"] != null && (bool)ViewData["ShowBlessing"] == true)
     {
         <h2 class="congratulations">Congratulations! Consider yourself blessed.</h2>
-        @Html.ActionLink("Download a PDF version", "Pdf", new { guid=Model.Indulgence.Guid})
+        
 
     <script type="text/javascript">    $('.congratulations').delay(5000).slideUp();</script>
     }
-
+    @Html.RouteLink("Download a PDF version", "ViewIndulgencePdf", new {guid=Model.Indulgence.Guid})
     <div class="aa">
         @{ Html.RenderPartial("ShareThis", new BlessTheWeb.MVC5.Models.ShareViewModel {Tweet = Model.Indulgence.Confession}); }
         <div class="indulgence">

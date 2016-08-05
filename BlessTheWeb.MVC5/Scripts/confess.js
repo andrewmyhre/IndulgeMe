@@ -34,10 +34,32 @@ function findCharities(q) {
                         .append($('<img src="'+imageUrl+'" alt="' + data[i].Name + '" title="' + data[i].Name + '" /><p>'+data[i].Name+'</div>')))
                 );
         }
-        $('#charities').slideDown();
-        $('#search').slideDown();
-        $('#p').slideUp();
+
+        if ($('#charityid').val() == '') {
+            $('#charities').slideDown();
+            $('#search').slideDown();
+            $('#p').slideUp();
+        } else {
+            $('#charities').slideUp();
+            $('#search').slideUp();
+            $('#p').slideDown();
+            $('#id').removeClass('hidden');
+            $('#id').slideDown();
+            $('#charitysearch').slideUp();
+            $('#donating-to').html($('#charityname').val());
+            $('#chosen').removeClass('hidden');
+            $('#chosen').show();
+            $('#doredeem').prop('disabled', false);
+        }
     });
+
+    $('#id form').submit(function() {
+        if ($('#email').val() == '') {
+            $('#email-required-alert').removeClass('hidden');
+            $('#email-required-alert').show();
+            return false;
+        }
+    })
 
     return false;
 }
@@ -45,7 +67,7 @@ function findCharities(q) {
 function choose(charityid, charityName) {
     $('#charityid').val(charityid);
     $('#charityname').val(charityName);
-    $('#chosen').html('Chosen charity: ' + charityName);
+    $('#donating-to').html(charityName);
     $('#doredeem').prop('disabled', false);
     $('#charitysearch').slideUp();
     $('#id').removeClass('hidden');

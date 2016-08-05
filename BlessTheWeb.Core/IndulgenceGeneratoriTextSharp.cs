@@ -93,7 +93,7 @@ namespace BlessTheWeb.Core
                 phrases.Add(new Phrase(string.Format("{0:c}", indulgence.AmountDonated), trajanProBoldSmall));
                 phrases.Add(new Phrase(" to the deserving organisation ", trajanProAttribution));
                 phrases.Add(new Phrase(indulgence.CharityName, trajanProBoldSmall));
-                phrases.Add(new Phrase(" and received this pleniary indulgence", trajanProAttribution));
+                phrases.Add(new Phrase(" and received this plenary indulgence", trajanProAttribution));
 
                 var attribution = new Paragraph();
                 confessionParagraph.Add(Environment.NewLine);

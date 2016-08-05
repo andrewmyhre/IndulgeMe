@@ -11,12 +11,11 @@
 
 <div id="select-charity">
     <h1>You want to repent for the sin of<br /> <em id="confession">"@Model.Confession"</em></h1>
-    <h2>For whom will you repent?</h2>
-    <p>Select a charity:</p>
-    <label id="chosen"></label>
+    <label id="chosen" class="hidden">You are donating to <span id="donating-to"></span>. A worthy cause indeed!</label>
     <input type="hidden" id="con" value="@Model.Confession" />
     <input type="hidden" id="cid" value="@ViewData["cid"]" />
     <div id="charitysearch">
+        <h2>Who will be the beneficiary of this act? Select a charity!</h2>
         <p id="p"><img src="/Content/ajax-loader.gif" /></p>
         <div class="container-fluid">
             <div class="container">
@@ -24,35 +23,46 @@
                 </div>
             </div>
         </div>
+        <form id="search" action="#" onsubmit="return findCharities($('#query').val());">
+            <p>or find a charity:<input type="text" name="query" id="query"/> <input type="button" id="find" value="Search" class="button"/>
+            </p>
+        </form>
+    </div>
 
-                    <form id="search" action="#" onsubmit="return findCharities($('#query').val());">
-                        <p>or find a charity:<input type="text" name="query" id="query"/> <input type="button" id="find" value="Search" class="button"/>
-                        </p>
-                    </form>
+    <div id="id" class="hidden">
+        <h2>You're ready to repent!</h2>
+        @using (Html.BeginForm("EnterDonationProcess", "Home"))
+        {
+            <input type="hidden" id="guid" name="guid" value="@ViewData["cid"]" />
+            <input type="hidden" id="charityid" name="charityid" value="@Request.QueryString["charityid"]" />
+            <input type="hidden" id="charityname" name="charityname" value="@Request.QueryString["charityName"]"/>
+
+            <p>
+                Choose from the following styles
+                <div class="container-fluid" id="choose-style">
+                    <div class="row">
+                        <div class="col-xs-12 col-md-4"><label for="parchment2"><img src="/Content/parchment2_thumbnail.jpg" alt='parchment2'/></label> <span><input type="radio" name="style" id="parchment2" value="parchment2" /> <label for="parchment2">Parchment 1</label></span></div>
+                        <div class="col-xs-12 col-md-4"><label for="parchment3"><img src="/Content/parchment3_thumbnail.jpg" alt='parchment3' /></label> <span><input type="radio" name="style" id="parchment3" value="parchment3" /><label for="parchment3">Parchment 2</label></span></div>
+                        <div class="col-xs-12 col-md-4"><label for="marble1"><img src="/Content/marble1_thumbnail.jpg" alt='marble1' /></label> <span><input type="radio" name="style" id="marble1" value="marble1" /><label for="marble1">Marble</label></span></div>
+                    </div>
                 </div>
+            </p>
 
-                <div id="id" class="hidden">
-                    <h2>Make yourself known?</h2>
-                    @using (Html.BeginForm("EnterDonationProcess", "Home"))
-                    {
-                        <input type="hidden" id="guid" name="guid" value="@ViewData["cid"]" />
-                        <input type="hidden" id="charityid" name="charityid" />
-                        <input type="hidden" id="charityname" name="charityname" />
+            <p>Optionally give your name. This will be public. But it will make your indulgence look cooler.</p>
+            <label for="name">Your name (optional):</label>
+            <input type="text" id="name" name="name" />
 
-                        <p>You can remain anonymous if you wish, but can you truly repent if you hide your identity?</p>
-                        <label for="name">Your name (optional):</label>
-                        <input type="text" id="name" name="name" />
+            <p>We'll send a PDF version of the indulgence to your email. We won't share this with anybody.</p>
+            <label for="email">Your email:</label>
+            <input type="text" id="email" name="email" />
+            <div class="alert alert-danger @if (string.IsNullOrWhiteSpace(Request.QueryString["needemail"])) {<text>hidden</text>}" id="email-required-alert" role="alert">Email is required I'm afraid.. it's worth it I promise!</div>
 
-                        <p>If you would like a copy of your indulgence in PDF format provide your email address here. We won't share it with anyone.</p>
-                        <label for="email">Email (optional):</label>
-                        <input type="text" id="email" name="email" />
-
-                        <p>After you click the 'Redeem' button you will be redirected to the JustGiving website where you can make your donation. Once your donation is processed you'll be returned to this site.</p>
-                        <p>
-                            <input type="submit" id="doredeem" value="Redeem yourself!" disabled="disabled" /><br />
-                        </p>
-                        Html.EndForm();
-                    }
-                </div>
+            <p>From here you will be redirected to the <em>JustGiving</em> website where you can make your donation. Once your donation is processed you'll be returned to this site and receive your indulgence!</p>
+            <p>
+                <button type="submit" id="doredeem" class="btn btn-lg" disabled="disabled">Absolve My Sin!</button>
+            </p>
+            Html.EndForm();
+        }
+    </div>
             </div>
 

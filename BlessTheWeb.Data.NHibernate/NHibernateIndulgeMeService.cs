@@ -128,7 +128,7 @@ namespace BlessTheWeb.Data.NHibernate
             }
         }
 
-        public void SetCharityDetails(string guid, int charityId, string charityName, string name, string email)
+        public void SetCharityDetails(string guid, int charityId, string charityName, string name, string email, string style)
         {
             var indulgence = _session.CreateCriteria<Indulgence>()
                 .Add(Restrictions.Eq("Guid", Guid.Parse(guid)))
@@ -137,6 +137,7 @@ namespace BlessTheWeb.Data.NHibernate
             indulgence.CharityId = charityId;
             indulgence.Name = name.Substring(0, name.Length <= 60 ? name.Length : 60);
             indulgence.DonorEmailAddress = email;
+            indulgence.BackgroundImageName = System.IO.Path.GetFileNameWithoutExtension(style);
             _session.SaveOrUpdate(indulgence);
             _session.Flush();
         }

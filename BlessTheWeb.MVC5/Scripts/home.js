@@ -39,4 +39,18 @@
         }).addClass("watermarkOn").val("Your confession...");
 
     });
+
+    $('#what-on-earth')
+        .click(function () {
+            if ($('#about').css('display') == 'none' || $('#about').hasClass('hidden')) {
+                $('#about').slideDown();
+                $('#about').removeClass('hidden');
+                $('#chevron').removeClass('glyphicon-chevron-down');
+                $('#chevron').addClass('glyphicon-chevron-up');
+            } else {
+                $('#about').slideUp();
+                $('#chevron').removeClass('glyphicon-chevron-up');
+                $('#chevron').addClass('glyphicon-chevron-down');
+            }
+        });
 });

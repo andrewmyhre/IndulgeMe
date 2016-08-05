@@ -58,8 +58,9 @@ namespace BlessTheWeb.MVC5
                 // clear error on server
                 Server.ClearError();
 
-                Response.RedirectToRoute(routeData.Values);
+                //Response.RedirectToRoute(routeData.Values);
             }
+            Server.ClearError();
         }
     }
 }

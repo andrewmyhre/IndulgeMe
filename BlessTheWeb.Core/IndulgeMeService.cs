@@ -130,7 +130,7 @@ namespace BlessTheWeb.Core
             _db.AddRange(sins);
         }
 
-        public void SetCharityDetails(string guid, int charityId, string charityName, string name, string email)
+        public void SetCharityDetails(string guid, int charityId, string charityName, string name, string email, string style)
         {
             var indulgence =
                 _db.Where(o => o is Indulgence).Select(o => o as Indulgence).SingleOrDefault(i => i.Guid == Guid.Parse(guid));
@@ -138,6 +138,7 @@ namespace BlessTheWeb.Core
             indulgence.CharityId = charityId;
             indulgence.Name = name.Substring(0, name.Length <= 60 ? name.Length : 60);
             indulgence.DonorEmailAddress = email;
+            indulgence.BackgroundImageName = System.IO.Path.GetFileNameWithoutExtension(style);
         }
 
         public Indulgence CreateIndulgenceForSin(string guid)

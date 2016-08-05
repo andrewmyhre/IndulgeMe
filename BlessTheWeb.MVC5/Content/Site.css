@@ -1,4 +1,15 @@
-﻿body {
+﻿@font-face {
+    font-family: 'TrajanProRegular';
+    src: url('/fonts/TrajanPro-Regular.otf') format("opentype"),
+        url('/fonts/TrajanPro-Regular.eot') format('embedded-opentype'),
+        url('/fonts/TrajanPro-Regular.ttf') format('truetype'),
+        url('/fonts/TrajanPro-Regular.woff') format('woff'),
+        url('/fonts/TrajanPro-Regular.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
     height: 100%;
   margin: 0;
   padding: 0;
@@ -6,7 +17,7 @@
     background-image:url('/content/paper.jpg');
 }
 
-body, p, a, div, td, input
+body, p, a, div, td, input, button
 {
     font-family:Georgia, verdana;
     font-size:12pt;
@@ -32,14 +43,22 @@ img#bg {
   text-align:center;
 }
 
-h1.masthead
+h1.masthead, h1.masthead a
 {
-    background-image:url('/content/header.png');
-    text-indent:-99999px;
-    background-repeat:no-repeat;
-    height:50px;
-    padding:0;
-    background-position:center;
+    font-family: 'TrajanProRegular';
+    font-size: 60pt;
+    
+}
+h1.masthead a:hover {
+    text-decoration: none;
+}
+
+.panel {
+    background-color: transparent;
+}
+
+p.lead {
+    margin-top: 20px;
 }
 
 p.tl
@@ -62,8 +81,14 @@ p.tl
 {
     display:inline;
     text-indent:0;
-    margin:0;
+    margin:2em;
     padding:0;
+    min-width: 200px;
+}
+
+#nav li a {
+    width: 200px;
+    display: inline-block;
 }
 
 #confess
@@ -126,12 +151,21 @@ margin-right:15px;
 #recently ul li
 {
 }
-#confess input
+#confess input, #confess button
 {
+    margin: 0;
     font-size:28pt;
     background-color:#F0FFFF;
     border-radius:0.5em;
     -moz-border-radius:0.5em;
+    vertical-align: middle;
+}
+#choose-style img {
+
+}
+#choose-style span {
+    width: 100%;
+    display: inline-block;
 }
 #confessbox
 {

@@ -11,7 +11,8 @@
 {
     <input type="hidden" name="exitUrl" value="@Model.ExitUrl"/>
     <input type="hidden" name="reference" value="@Model.Reference"/>
-<p>You are donating <input type="text" name="amount" value="@Model.Amount"/> <input type="text" name="currency" value="@Model.Currency"/> to charity #<input type="text" name="charityid" value="@Model.CharityId"/>
+<p>You are donating <input type="text" name="amount" value="@Model.Amount"/> <input type="text" name="currency" value="@Model.Currency"/> to charity #@Model.CharityId
+    <input type="hidden" name="charityid" value="@Model.CharityId"/>
 </p>
 <input type="submit" value="Click here to fake the donation"/>
 

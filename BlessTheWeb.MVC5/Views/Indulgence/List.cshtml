@@ -11,7 +11,7 @@
     {
     <div class="indulgence">
         <a href="/indulgence/@indulgence.Guid"><img src="/indulgence/image/@indulgence.Guid/3" /></a>
-        <p><a href="/indulgence/@indulgence.Guid">@indulgence.Name, @indulgence.DateConfessed.ToString("hh:mm dd/MM/yyyy")</a></p>
+        <p><a href="/indulgence/@indulgence.Guid">@(string.IsNullOrWhiteSpace(indulgence.Name)?"Anonymous": indulgence.Name), @indulgence.DateConfessed.ToString("hh:mm dd/MM/yyyy")</a></p>
     </div>    
     }
     <div class="clearfix"></div>
