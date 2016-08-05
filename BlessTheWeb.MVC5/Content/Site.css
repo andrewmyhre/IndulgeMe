@@ -84,7 +84,6 @@ h1.masthead a:hover {
         z-index: 1;
         width: 100%;
         margin: auto;
-        text-align: center;
     }
 
     #confess input, #confess button {
@@ -110,6 +109,14 @@ h1.masthead a:hover {
     #indulgence-image {
         width: 80%;
     }
+     #select-charity .charity-card object, #select-charity .charity-card img {
+            float: left;
+            margin-right: 1em;
+        }
+
+        #select-charity .charity-card a p, #select-charity .charity-card a small em {
+            text-align: left;
+        }
 }
 @media(min-width:992px){}
 @media(min-width:1200px) {
@@ -132,7 +139,6 @@ h1.masthead a:hover {
         z-index: 1;
         width: 1024px;
         margin: auto;
-        text-align: center;
     }
 
     #confess input, #confess button {
@@ -151,10 +157,23 @@ h1.masthead a:hover {
         padding: 0;
     }
 
-    #nav li a {
-        min-width: 200px;
-        display: inline-block;
+        #nav li a {
+            min-width: 200px;
+            display: inline-block;
+        }
+
+    #select-charity .charity-card {
+        margin-bottom: 2em;
     }
+
+        #select-charity .charity-card object, #select-charity .charity-card img {
+            float: left;
+            margin-right: 1em;
+        }
+
+        #select-charity .charity-card a p, #select-charity .charity-card a small em {
+            text-align: left !important;
+        }
 }
 
 /* everything */
@@ -163,6 +182,7 @@ body, p, a, div, td, input, button {
     font-family: Georgia, verdana;
     font-size: 12pt;
     color: #7F0000;
+    text-align: center;
 }
 
 a { color:#AF0000;}
@@ -317,9 +337,15 @@ border-radius: 15px;
 }
 
 #select-charity .charity-card {
-    height: 200px;
+    margin-bottom: 2em;
 }
-
+#select-charity .charity-card object, #select-charity .charity-card img {
+    float: left;
+    margin-right: 1em;
+}
+#select-charity .charity-card a p,#select-charity .charity-card a small em {
+    text-align: left !important;
+}
 input {
 -moz-border-radius-bottomleft:5px;
 -moz-border-radius-bottomright:5px;

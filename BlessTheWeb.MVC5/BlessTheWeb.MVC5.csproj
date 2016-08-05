@@ -279,6 +279,7 @@
     <Content Include="Content\jesus.png" />
     <Content Include="Content\marble1.jpg" />
     <Content Include="Content\marble1_thumbnail.jpg" />
+    <Content Include="Content\notfound.png" />
     <Content Include="Content\paper.jpg" />
     <Content Include="Content\parchment.jpg" />
     <Content Include="Content\parchment2.jpg" />

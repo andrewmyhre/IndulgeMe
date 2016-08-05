@@ -23,15 +23,14 @@ function findCharities(q) {
     function (data) {
         $('#charities').empty();
         for (var i = 0; i < data.length; i++) {
-            var imageUrl = 'http://www.justgiving.com' + data[i].LogoFileName;
-            imageUrl='https://images.justgiving.com/image/23cc9334-f803-43cb-897a-ace65b7d98d7.PNG?template=size200x200';
+            var imageUrl = 'https://images.justgiving.com/image/' + data[i].Logo + '?template=size200x200';
             $('#charities')
-                .append($('<div class="col-xs-12 col-md-3 charity-card" id="' + data[i].Id + '"></div>')
+                .append($('<div class="col-xs-12 col-md-12 charity-card" id="' + data[i].Id + '"></div>')
                     .append($('<a href="#" data-charityid="'+data[i].Id+'" data-charityname="'+data[i].Name+'"></a>')
                         .click(function () {
                             choose($(this).parent().attr('id'), $(this).attr('data-charityname'));
                         })
-                        .append($('<img src="'+imageUrl+'" alt="' + data[i].Name + '" title="' + data[i].Name + '" /><p>'+data[i].Name+'</div>')))
+                        .append($('<object data="/content/notfound.png" type="image/png"><img src="' + imageUrl + '" alt="' + data[i].Name + '" title="' + data[i].Name + '" /></object><p>' + data[i].Name + '</p><small><em>'+data[i].Description+'</em></small></div>')))
                 );
         }
 
