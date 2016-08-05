@@ -67,7 +67,7 @@ namespace BlessTheWeb.MVC5.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            kernel.Bind<ILog>().ToMethod(x=>log4net.LogManager.GetLogger(x.Request.Target != null ? x.Request.Target.Type.FullName : "instance-logger"));
+            kernel.Bind<ILog>().ToMethod(x=>log4net.LogManager.GetLogger(x.Request.Target != null ? x.Request.Target.Type.FullName : "BlessTheWeb"));
             kernel.Bind<IFileStorage>().To<AzureFileStorage>();
             kernel.Bind<IIndulgenceGenerator>().To<IndulgenceGeneratoriTextSharp>();
             kernel.Bind<ISession>().ToMethod(x =>SessionFactory.Instance.OpenSession()).InRequestScope();
