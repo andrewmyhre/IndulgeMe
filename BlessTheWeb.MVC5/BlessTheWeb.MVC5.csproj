@@ -269,6 +269,7 @@
     <Content Include="Content\CharitySearch.html" />
     <Content Include="Content\cloud1.png" />
     <Content Include="Content\cloud2.png" />
+    <Content Include="Content\cloud3.png" />
     <Content Include="Content\emailTemplates\Exception.xml" />
     <Content Include="Content\emailTemplates\IndulgenceCreated.xml" />
     <Content Include="Content\emailTemplates\indulgenceEmail.xml" />
