@@ -14,10 +14,11 @@
     }
     @Html.RouteLink("Download a PDF version", "ViewIndulgencePdf", new {guid=Model.Indulgence.Guid})
     <div class="aa">
-        @{ Html.RenderPartial("ShareThis", new BlessTheWeb.MVC5.Models.ShareViewModel {Tweet = Model.Indulgence.Confession}); }
         <div class="indulgence">
-            <img src="/indulgence/image/@Model.Indulgence.Guid/1" alt="@Html.Raw(Model.ImageAlt)" />
+            <img id="indulgence-image" src="/indulgence/image/@Model.Indulgence.Guid/1" alt="@Html.Raw(Model.ImageAlt)" />
         </div>
+        @{ Html.RenderPartial("ShareThis", new BlessTheWeb.MVC5.Models.ShareViewModel { Tweet = Model.Indulgence.Confession }); }
+
 
         <div style="clear:both" />
         <p><a href="/indulgences/list">View more indulgences</a></p>

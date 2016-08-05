@@ -27,6 +27,9 @@ h1.masthead a:hover {
         font-family: 'TrajanProRegular';
         font-size: 30pt;
     }
+    h2 {
+        font-size: 16pt;
+    }
 
     .page {
         position: relative;
@@ -53,6 +56,12 @@ h1.masthead a:hover {
     #nav li a {
         min-width: 32%;
         display: inline-block;
+    }
+    #indulgence-image {
+        width: 80%;
+    }
+    input {
+        width: 80px;
     }
 }
 @media(min-width:768px) {
@@ -97,6 +106,9 @@ h1.masthead a:hover {
     #nav li a {
         min-width: 32%;
         display: inline-block;
+    }
+    #indulgence-image {
+        width: 80%;
     }
 }
 @media(min-width:992px){}
