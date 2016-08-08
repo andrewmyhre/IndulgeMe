@@ -14,7 +14,7 @@ using log4net;
 namespace BlessTheWeb.MVC5.Controllers
 {
     [RoutePrefix("")]
-    public class HomeController : Controller
+    public class HomeController : BlessTheWebController
     {
         private readonly IIndulgeMeService _indulgeMeService;
         private readonly ILog _log;

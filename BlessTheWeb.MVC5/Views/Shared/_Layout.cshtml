@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Bless The Web</title>
+    <title>@ViewBag.Title - @ViewBag.SiteName</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
@@ -12,7 +12,7 @@
 <div class="page">
     <div class="page-header">
         <h1 class="masthead">
-            <a href="/">Bless The Web</a>
+            <a href="/">@ViewBag.SiteName</a>
         </h1>
         @RenderSection("tagline", required: false)
         <div id="wrapper">

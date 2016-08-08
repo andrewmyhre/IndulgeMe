@@ -26,7 +26,7 @@ namespace BlessTheWeb.Data.NHibernate
             return Fluently
                 .Configure()
                 .Database(FluentNHibernate.Cfg.Db.MsSqlConfiguration.MsSql2012
-                .ConnectionString(System.Configuration.ConfigurationManager.ConnectionStrings["blesstheweb-sql-dev"].ConnectionString))
+                .ConnectionString(System.Configuration.ConfigurationManager.ConnectionStrings["blesstheweb-sql"].ConnectionString))
                 .Mappings(x=>x.FluentMappings.AddFromAssemblyOf<IndulgenceMap>())
                 .ExposeConfiguration(cfg=>new SchemaUpdate(cfg).Execute(false,true))
                 .BuildSessionFactory();
@@ -38,7 +38,7 @@ namespace BlessTheWeb.Data.NHibernate
             _sessionFactory = Fluently
                 .Configure()
                 .Database(FluentNHibernate.Cfg.Db.MsSqlConfiguration.MsSql2012
-                .ConnectionString(System.Configuration.ConfigurationManager.ConnectionStrings["blesstheweb-sql-dev"].ConnectionString))
+                .ConnectionString(System.Configuration.ConfigurationManager.ConnectionStrings["blesstheweb-sql"].ConnectionString))
                 .Mappings(x => x.FluentMappings.AddFromAssemblyOf<IndulgenceMap>())
                 .ExposeConfiguration(cfg => new SchemaExport(cfg).Create(false, true))
                 .BuildSessionFactory();

@@ -13,7 +13,7 @@ using System.Web.Mvc;
 
 namespace BlessTheWeb.MVC5.Controllers
 {
-    public class IndulgenceController : Controller
+    public class IndulgenceController : BlessTheWebController
     {
         private readonly IIndulgeMeService _indulgeMeService;
         private readonly IIndulgenceEmailer _indulgenceEmailer;
