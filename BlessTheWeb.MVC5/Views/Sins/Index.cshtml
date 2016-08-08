@@ -1,41 +1,20 @@
 ﻿@model IEnumerable<BlessTheWeb.Core.Sin>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Sins";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Sins</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    What have people confessed to?
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Content)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TotalDonationCount)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TotalDonated)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Content)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TotalDonationCount)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TotalDonated)
-        </td>
-    </tr>
-}
-
-</table>
+<div class="fluid-container">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-xs-12 col-sm-6 col-md-4"><blockquote>"@Html.DisplayFor(modelItem => item.Content)"</blockquote><br/></div>
+        }
+    </div>
+</div>

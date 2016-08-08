@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace BlessTheWeb.MVC5.Controllers
 {
-    public class SinsController : Controller
+    public class SinsController : BlessTheWebController
     {
         private readonly IIndulgeMeService _indulgeMeService;
 
