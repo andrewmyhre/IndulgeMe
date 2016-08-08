@@ -10,13 +10,17 @@ using System.Web.Http;
 using BlessTheWeb.Data.NHibernate;
 using BlessTheWeb.Storage.AzureCdn;
 using NHibernate.Tool.hbm2ddl;
+using log4net;
 
 namespace BlessTheWeb.MVC5.Controllers
 {
     public class ConfigController : ApiController
     {
-        public ConfigController()
+        private readonly ILog _log;
+
+        public ConfigController(ILog log)
         {
+            _log = log;
         }
 
         [HttpGet]
@@ -60,8 +64,16 @@ namespace BlessTheWeb.MVC5.Controllers
         [Route("config/rebuild-database")]
         public string RebuildDatabase()
         {
-            SessionFactory.RebuildDatabase();
-            return "Done.";
+            try
+            {
+                SessionFactory.RebuildDatabase();
+                return "Done.";
+            }
+            catch (Exception ex)
+            {
+                _log.Error("Error while rebuilding the database", ex);
+                throw;
+            }
         }
     }
 }
