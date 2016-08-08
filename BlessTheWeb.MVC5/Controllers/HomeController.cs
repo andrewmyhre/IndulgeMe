@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Caching;
 using System.Web.Mvc;
 using System.Configuration;
+using log4net;
 
 namespace BlessTheWeb.MVC5.Controllers
 {
@@ -16,10 +17,12 @@ namespace BlessTheWeb.MVC5.Controllers
     public class HomeController : Controller
     {
         private readonly IIndulgeMeService _indulgeMeService;
+        private readonly ILog _log;
 
-        public HomeController(IIndulgeMeService indulgeMeService)
+        public HomeController(IIndulgeMeService indulgeMeService, ILog log)
         {
             _indulgeMeService = indulgeMeService;
+            _log = log;
         }
 
         public ActionResult Index()
@@ -98,7 +101,15 @@ namespace BlessTheWeb.MVC5.Controllers
                 return RedirectToAction("Confess", "Home", new {guid = guid, charityid=charityId, charityName=charityName, needemail=true});
             }
 
-            _indulgeMeService.SetCharityDetails(guid, charityId.Value, charityName, name, email, style);
+            try
+            {
+                _indulgeMeService.SetCharityDetails(guid, charityId.Value, charityName, name, email, style);
+            }
+            catch (Exception ex)
+            {
+                _log.Error("An error happend", ex);
+                throw;
+            }
             return EnterSimpleDonationProcess(guid, charityId.Value);
         }
 
