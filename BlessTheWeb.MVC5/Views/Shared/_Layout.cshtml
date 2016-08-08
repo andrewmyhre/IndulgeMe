@@ -22,10 +22,24 @@
                 <li>@Html.ActionLink("Sins", "List", "Sins")</li>
             </ul>
         </div>
+        <p><a href="#" id="what-on-earth">What in heaven is this?<span id="chevron" class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></a></p>
+        <div class="well hidden" id="about">
+            <p>
+                In the middle-ages the Catholic church decided that people could have their pergatory reduced if they perform good works. This is called a <a href="https://en.wikipedia.org/wiki/Indulgence"><em>plenary</em> or <em>papal</em> indulgence</a>. What qualifies as a 'good work' you may ask? Well, among other things, donating money to a <span style="text-decoration: line-through">the church</span> a good cause of course!
+            </p>
+            <p>So in the middle-ages the plenary indulgence became a method of extracting money from the faithful in exchange for a reduced sentence in the afterlife. It was a fantastic scam. The sale of salvation became big business until in 1567 <a href="https://en.wikipedia.org/wiki/Indulgence#Late_medieval_abuses">abuse of the practise</a> was so widespread Pope Pius V was compelled to stop the granting of indulgences for money altogether. So the practise stopped... until now!</p>
+            <p>We at @ViewBag.SiteName have brought the practise kicking and screaming into the 21st century. You confess to a sin and we'll suggest some charities to make small donation to. Pick one and donate. Then you will receive a genuine* plenary indulgence in PDF format which you can print out and hang on your wall! Pretty neat huh??</p>
+            <p>So what are you waiting for? Confess! Donate! Participate in a joke at the expense of the Catholic church! Share this with your friends! Like you have anything better to do!</p>
+            <p>
+                <small>*genuine doesn't mean it's magical or supernatural in any way</small>
+            </p>
+            <p>TL;DR: donate to charity for favours in the afterlife.</p>
+        </div>
     </div>
             @RenderBody()
-            <div id="footer">
-            </div>
+    <div id="footer">
+        
+    </div>
             <div class="push"></div>
         </div>
         <div id="footer-image">
@@ -36,15 +50,34 @@
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 
-    <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+<script type="text/javascript">
+    $(document).ready(function()
+    {
+        $('#what-on-earth')
+            .click(function () {
+            if ($('#about').css('display') == 'none' || $('#about').hasClass('hidden')) {
+                $('#about').slideDown();
+                $('#about').removeClass('hidden');
+                $('#chevron').removeClass('glyphicon-chevron-down');
+                $('#chevron').addClass('glyphicon-chevron-up');
+            } else {
+                $('#about').slideUp();
+                $('#chevron').removeClass('glyphicon-chevron-up');
+                $('#chevron').addClass('glyphicon-chevron-down');
+            }
+        });
+    });
+</script>
 
-  ga('create', '@System.Configuration.ConfigurationManager.AppSettings["GoogleAnalyticsTrackingCode"]', 'auto');
-  ga('send', 'pageview');
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-    </script>
+    ga('create', '@System.Configuration.ConfigurationManager.AppSettings["GoogleAnalyticsTrackingCode"]', 'auto');
+    ga('send', 'pageview');
+
+</script>
 </body>
 </html>
