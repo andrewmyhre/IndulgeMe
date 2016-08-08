@@ -80,12 +80,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BlessTheWeb.Core\BlessTheWeb.Core.csproj">
-      <Project>{2CF441BC-21A6-40CC-BDE8-3D9A985FF0A2}</Project>
-      <Name>BlessTheWeb.Core</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="app.config" />
   </ItemGroup>
   <ItemGroup>
@@ -94,6 +88,12 @@
     <Content Include="lib\Newtonsoft.Json.dll" />
     <Content Include="lib\TweetSharp.dll" />
     <Content Include="lib\TweetSharp.Twitter.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BlessTheWeb.Core\BlessTheWeb.Core.csproj">
+      <Project>{56620b44-73d4-4190-bbc0-ba7e04e1105f}</Project>
+      <Name>BlessTheWeb.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

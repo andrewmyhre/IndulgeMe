@@ -25,5 +25,6 @@ namespace BlessTheWeb.Core
         void SetCharityDetails(string guid, int charityId, string charityName, string name, string email, string style);
         Indulgence CreateIndulgenceForSin(string guid);
         void Absolve(string guid, int donationId, string donationRef, decimal amount, string reference);
+        void Tweet(Indulgence indulgence);
     }
 }

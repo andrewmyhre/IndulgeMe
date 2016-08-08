@@ -80,7 +80,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BlessTheWeb.Core\BlessTheWeb.Core.csproj">
-      <Project>{2CF441BC-21A6-40CC-BDE8-3D9A985FF0A2}</Project>
+      <Project>{56620b44-73d4-4190-bbc0-ba7e04e1105f}</Project>
       <Name>BlessTheWeb.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\BlessTheWeb.Data.NHibernate\BlessTheWeb.Data.NHibernate.csproj">

@@ -19,6 +19,7 @@ namespace BlessTheWeb.MVC5.App_Start
     using Storage.AzureCdn;
     using log4net;
     using Email;
+    using Core.Twitter;
     public static class NinjectWebCommon 
     {
         private static readonly Bootstrapper bootstrapper = new Bootstrapper();
@@ -75,6 +76,7 @@ namespace BlessTheWeb.MVC5.App_Start
             kernel.Bind<ISession>().ToMethod(x =>SessionFactory.Instance.OpenSession()).InRequestScope();
             kernel.Bind<IIndulgeMeService>().To<NHibernateIndulgeMeService>();
             kernel.Bind<IIndulgenceEmailer>().To<AzureIndulgenceEmailer>();
+            kernel.Bind<ITweeter>().To<Tweeter>();
         }
     }
 }

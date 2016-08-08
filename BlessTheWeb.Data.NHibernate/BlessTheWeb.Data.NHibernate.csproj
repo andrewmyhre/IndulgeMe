@@ -68,13 +68,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BlessTheWeb.Core\BlessTheWeb.Core.csproj">
-      <Project>{ba63e9fa-0cec-447d-92e5-b8796db37018}</Project>
-      <Name>BlessTheWeb.Core</Name>
-    </ProjectReference>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <ProjectReference Include="..\BlessTheWeb.Core\BlessTheWeb.Core.csproj">
+      <Project>{56620b44-73d4-4190-bbc0-ba7e04e1105f}</Project>
+      <Name>BlessTheWeb.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

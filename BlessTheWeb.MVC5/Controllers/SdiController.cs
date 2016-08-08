@@ -73,6 +73,8 @@ namespace BlessTheWeb.MVC5.Controllers
 
                     await _indulgenceEmailer.Send(indulgence, ConfigurationManager.AppSettings["IndulgencePdfRelativePath"]);
 
+                    _indulgeMeService.Tweet(indulgence);
+
                     TempData["absolved"] = guid;
 
                     ControllerContext.RequestContext.HttpContext.Cache.Remove("siteInfo");

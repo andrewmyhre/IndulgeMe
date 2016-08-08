@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using BlessTheWeb.Core.Extensions;
 using BlessTheWeb.Core.Repository;
+using BlessTheWeb.Core.Twitter;
 
 namespace BlessTheWeb.Core
 {
@@ -17,12 +18,14 @@ namespace BlessTheWeb.Core
     {
         private readonly IFileStorage _fileStorage;
         private readonly IIndulgenceGenerator _indulgenceGenerator;
+        private readonly ITweeter _tweeter;
         private static List<object> _db = new List<object>();
 
-        public IndulgeMeService(IFileStorage fileStorage, IIndulgenceGenerator indulgenceGenerator)
+        public IndulgeMeService(IFileStorage fileStorage, IIndulgenceGenerator indulgenceGenerator, ITweeter tweeter)
         {
             _fileStorage = fileStorage;
             _indulgenceGenerator = indulgenceGenerator;
+            _tweeter = tweeter;
         }
 
         public SiteSummaryInfo GetSiteSummaryInfo()
@@ -164,6 +167,11 @@ namespace BlessTheWeb.Core
         public Indulgence GetIndulgenceByGuid(string guid)
         {
             return _db.Where(o => o is Indulgence).Select(o => o as Indulgence).SingleOrDefault(i => i.Guid == Guid.Parse(guid));
+        }
+
+        public void Tweet(Indulgence indulgence)
+        {
+            _tweeter.Tweet(indulgence);
         }
     }
 }

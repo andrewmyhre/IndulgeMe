@@ -9,6 +9,7 @@ using FluentNHibernate.Utils;
 using NHibernate.Criterion;
 using BlessTheWeb.Core.Repository;
 using System.Configuration;
+using BlessTheWeb.Core.Twitter;
 
 namespace BlessTheWeb.Data.NHibernate
 {
@@ -17,12 +18,14 @@ namespace BlessTheWeb.Data.NHibernate
         private readonly ISession _session;
         private readonly IIndulgenceGenerator _indulgenceGenerator;
         private readonly IFileStorage _fileStorage;
+        private readonly ITweeter _tweeter;
 
-        public NHibernateIndulgeMeService(ISession session, IIndulgenceGenerator indulgenceGenerator, IFileStorage fileStorage)
+        public NHibernateIndulgeMeService(ISession session, IIndulgenceGenerator indulgenceGenerator, IFileStorage fileStorage, ITweeter tweeter)
         {
             _session = session;
             _indulgenceGenerator = indulgenceGenerator;
             _fileStorage = fileStorage;
+            _tweeter = tweeter;
         }
 
         public IEnumerable<Indulgence> AllIndulgences(int page, int pageSize)
@@ -208,6 +211,11 @@ namespace BlessTheWeb.Data.NHibernate
             return _session.CreateCriteria<Indulgence>()
                 .Add(Restrictions.Eq("Guid", Guid.Parse(guid)))
                 .UniqueResult<Indulgence>();
+        }
+
+        public void Tweet(Indulgence indulgence)
+        {
+            _tweeter.Tweet(indulgence);
         }
     }
 }

@@ -62,7 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BlessTheWeb.Core\BlessTheWeb.Core.csproj">
-      <Project>{2cf441bc-21a6-40cc-bde8-3d9a985ff0a2}</Project>
+      <Project>{56620b44-73d4-4190-bbc0-ba7e04e1105f}</Project>
       <Name>BlessTheWeb.Core</Name>
     </ProjectReference>
   </ItemGroup>
