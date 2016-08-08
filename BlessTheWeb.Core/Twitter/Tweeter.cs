@@ -39,7 +39,6 @@ namespace BlessTheWeb.Core.Twitter
             else
             {
                 status = string.Format("A sin has been absolved {0}/indulgence/{1}",
-                    indulgence.Name,
                     ConfigurationManager.AppSettings["WebsiteHostName"],
                     indulgence.Guid);
             }
