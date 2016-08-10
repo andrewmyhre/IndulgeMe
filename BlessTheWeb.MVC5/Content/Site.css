@@ -13,6 +13,25 @@ h1.masthead a:hover {
     text-decoration: none;
 }
 
+.fallback {
+    /*background-image: url('/content/notfound.png');*/
+    display: inline-block; /*to ensure it wraps correctly around the image, even if it is a a or span tag*/
+    min-width: 200px; 
+    min-height: 200px;
+    background-position: center center; /* fallback for older browsers */
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.cc_image {
+    min-width: 200px;
+    min-height: 200px;
+    background-position: center center; /* fallback for older browsers */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: transparent;
+}
+
 @media(max-width:767px) {
     /* iphone 6 */
     body {
@@ -138,13 +157,8 @@ h1.masthead a:hover {
     #indulgence-image {
         width: 80%;
     }
-     #select-charity .charity-card object, #select-charity .charity-card img {
-            float: left;
-            margin-right: 1em;
-        }
-
-        #select-charity .charity-card a p, #select-charity .charity-card a small em {
-            text-align: left;
+     #select-charity .charity-card {
+            margin-bottom: 1em;
         }
         #god_blessing {
         background-image: url('/content/god_head_sm.png');
@@ -212,19 +226,6 @@ h1.masthead a:hover {
         #nav li a {
             min-width: 200px;
             display: inline-block;
-        }
-
-    #select-charity .charity-card {
-        margin-bottom: 2em;
-    }
-
-        #select-charity .charity-card object, #select-charity .charity-card img {
-            float: left;
-            margin-right: 1em;
-        }
-
-        #select-charity .charity-card a p, #select-charity .charity-card a small em {
-            text-align: left !important;
         }
 
         #god_blessing {
@@ -414,14 +415,11 @@ border-radius: 15px;
 }
 
 #select-charity .charity-card {
-    margin-bottom: 2em;
+    margin-bottom: 1em;
+    text-align: left;
 }
-#select-charity .charity-card object, #select-charity .charity-card img {
-    float: left;
-    margin-right: 1em;
-}
-#select-charity .charity-card a p,#select-charity .charity-card a small em {
-    text-align: left !important;
+#select-charity .charity-card h5,#select-charity .charity-card p {
+    text-align: left;
 }
 input {
 -moz-border-radius-bottomleft:5px;
