@@ -23,7 +23,7 @@ function findCharities(q) {
     function (data) {
         $('#charities').empty();
         for (var i = 0; i < data.length; i++) {
-            var imageUrl = 'https://images.justgiving.com/image/' + data[i].Logo + '?template=size200x200';
+            var imageUrl = 'http://images.justgiving.com/image/'+data[i].Logo + '?template=size200x200';
             $('#charities')
                 .append($('<div class="col-xs-12 col-md-12 charity-card" id="' + data[i].Id + '"></div>')
                     .append($('<a href="#" data-charityid="'+data[i].Id+'" data-charityname="'+data[i].Name+'"></a>')
