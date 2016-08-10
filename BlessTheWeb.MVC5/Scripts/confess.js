@@ -24,12 +24,12 @@ function findCharities(q) {
         $('#charities').empty();
         for (var i = 0; i < data.length; i++) {
             var imageUrl = 'http://images.justgiving.com/image/'+data[i].Logo + '?template=size200x200';
-            var link = $('<a href="#" data-charityid="' + data[i].Id + '" data-charityname="' + data[i].Name + '"><h5>' + data[i].Name + '</h5><p>' + data[i].Description + '</p></a>')
+            var link = $('<a href="#" data-charityid="' + data[i].Id + '" data-charityname="' + data[i].Name + '" data-charitylogo="' + imageUrl + '"><h5>' + data[i].Name + '</h5><p>' + data[i].Description + '</p></a>')
                 .click(function () {
-                    choose($(this).parent().attr('id'), $(this).attr('data-charityname'));
+                    choose($(this).parent().attr('id'), $(this).attr('data-charityname'),$(this).attr('data-charitylogo'));
                 });
-            var image = $('<a href="#" data-charityid="' + data[i].Id + '" data-charityname="' + data[i].Name + '"></a>')
-                .click(function () {choose($(this).parent().attr('id'), $(this).attr('data-charityname'));})
+            var image = $('<a href="#" data-charityid="' + data[i].Id + '" data-charityname="' + data[i].Name + '" data-charitylogo="'+imageUrl+'"></a>')
+                .click(function () { choose($(this).parent().attr('id'), $(this).attr('data-charityname'), $(this).attr('data-charitylogo')); })
                 .append($('<img class="cc_image" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" style="background-image: url(\'' + imageUrl + '\')" alt="' + data[i].Name + '" title="' + data[i].Name + '" />'));
             var col1 = $('<div class="col-xs-12 col-md-4"></div>').append($('<div class="cc_image_container fallback"></div>').append(image));
             var col2 = $('<div class="col-xs-12 col-md-8"></div>').append(link);
@@ -66,9 +66,10 @@ function findCharities(q) {
     return false;
 }
 
-function choose(charityid, charityName) {
+function choose(charityid, charityName, charityLogo) {
     $('#charityid').val(charityid);
     $('#charityname').val(charityName);
+    $('#charity-logo').prop('src', charityLogo);
     $('#donating-to').html(charityName);
     $('#doredeem').prop('disabled', false);
     $('#charitysearch').slideUp();
