@@ -11,7 +11,6 @@
 
 <div id="select-charity">
     <h1>You want to repent for the sin of<br /> <em id="confession">"@Model.Confession"</em></h1>
-    <label id="chosen" class="hidden">You are donating to <span id="donating-to"></span>. A worthy cause indeed!</label>
     <input type="hidden" id="con" value="@Model.Confession" />
     <input type="hidden" id="cid" value="@ViewData["cid"]" />
     <div id="charitysearch">
@@ -29,14 +28,18 @@
         </form>
     </div>
 
-    <div id="id" class="hidden">
+    <div id="id" class="hidden row">
         <h2>You're ready to repent!</h2>
         @using (Html.BeginForm("EnterDonationProcess", "Home"))
         {
             <input type="hidden" id="guid" name="guid" value="@ViewData["cid"]" />
             <input type="hidden" id="charityid" name="charityid" value="@Request.QueryString["charityid"]" />
-            <input type="hidden" id="charityname" name="charityname" value="@Request.QueryString["charityName"]"/>
+            <input type="hidden" id="charityname" class="charityname" name="charityname" value="@Request.QueryString["charityName"]"/>
 
+            <div class="col-xs-12">
+                <p id="chosen">You are donating to <span id="donating-to"></span>. A worthy cause indeed!</p>
+                <p><img id="charity-logo"/></p>
+            </div>
             <p>
                 Choose from the following styles
                 <div class="container-fluid" id="choose-style">
